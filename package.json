@@ -1,0 +1,16 @@
+{
+  "name": "dazn-static-content-api",
+  "version": "1.0.0",
+  "description": "Fetching live static rails content from the DAZN public API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrickbower/dazn-static-content-api.git"
+  },
+  "author": "Patrick Bower",
+  "homepage": "https://github.com/patrickbower/dazn-static-content-api#readme"
+}
