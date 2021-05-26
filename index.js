@@ -1,57 +1,71 @@
-import api from "./api.js";
+import Api from "./api.js";
 
 // fetch("https://rails.discovery.indazn.com/ca/v8/rails?country=ca&groupId=home")
 //   .then((res) => res.text())
 //   .then((body) => console.log(body));
 
 /**
- * getFormData
- * serialize form data
- *
- * @param {object} form
- * @returns object
+ * serializeFormData - serialize form data
+ * @param {object} form - form data object
+ * @returns {object}
  */
-const getFormData = (form) => {
-  const formData = new FormData(form);
-  const formObject = Object.fromEntries(formData);
+const serializeFormData = (form) => {
+  const customValues = new FormData(form);
+  const formObject = Object.fromEntries(customValues);
   return formObject;
 };
 
-const buildUrlQueryString = (queryPrams, formData) => {
-  const queryPramsKeys = Object.keys(queryPrams);
-  const formDataKeys = Object.keys(formData);
-  const intersection = queryPramsKeys.filter((element) =>
-    formDataKeys.includes(element)
-  );
-  const compiled = { ...queryPrams, ...formData };
-  return compiled;
-};
-
-const buildUrl = (api, formData) => {
-  const { url, queryPrams } = api;
-  const queryString = buildUrlQueryString(queryPrams, formData);
-
-  console.log("queryString", queryString);
-  // return `${url}?${queryString}`;
+/**
+ * constructProps - merge custom data with defaults
+ * @param {object} queryPrams
+ * @param {object} customValues
+ * @returns {object}
+ */
+const constructProps = (queryPrams, customValues) => {
+  for (const property in queryPrams) {
+    if (queryPrams[property] === null) {
+      queryPrams[property] = customValues[property];
+    }
+  }
+  return queryPrams;
 };
 
 /**
- * initRequest
- * Constructor function
- *
- * @param {object} event
+ * buildPrams - construct query string from data
+ * @param {object} properties -
+ * @returns {string}
+ */
+const buildPrams = (properties) => {
+  let queryString = "";
+  for (const key in properties) {
+    queryString += `${key}=${properties[key]}&`;
+  }
+  return queryString.slice(0, -1);
+};
+
+/**
+ * buildUrl - construct a url from defaults and form inputted data
+ * @param {object} defaultValues - default settings from json
+ * @param {object} customValues - form inputted values
+ * @returns {string}
+ */
+const buildUrl = (defaultValues, customValues) => {
+  const { url, queryPrams } = defaultValues;
+  const properties = constructProps(queryPrams, customValues);
+  const queryString = buildPrams(properties);
+  return `${url}?${queryString}`;
+};
+
+/**
+ * initRequest - start
+ * @param {object} event - triggered by form submission
  */
 const initRequest = (event) => {
   event.preventDefault();
-  const formData = getFormData(event.target);
-  const railsQueryString = buildUrl(api.rails, formData);
-  // console.log(railsQueryString);
-  // print(request);
+  const customValues = serializeFormData(event.target);
+  const railsQueryString = buildUrl(Api.rails, customValues);
+  console.log(railsQueryString);
 };
-
-// const print = (body) => {
-//   document.querySelector("#print").textContent = body;
-// };
 
 const form = document.querySelector("#form");
 form.addEventListener("submit", initRequest);
