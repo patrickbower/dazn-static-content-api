@@ -1,9 +1,5 @@
 import Api from "./api.js";
 
-// fetch("https://rails.discovery.indazn.com/ca/v8/rails?country=ca&groupId=home")
-//   .then((res) => res.text())
-//   .then((body) => console.log(body));
-
 /**
  * constructProps - merge custom data with defaults
  * @param {object} queryPrams
@@ -16,6 +12,7 @@ const constructProps = (queryPrams, customValues) => {
       queryPrams[property] = customValues[property];
     }
   }
+  console.log("two", queryPrams);
   return queryPrams;
 };
 
@@ -45,15 +42,39 @@ const buildUrl = (defaultValues, customValues) => {
   return `${url}?${queryString}`;
 };
 
+const buildMultiUrls = (defaultValues, customValues, listArray) => {
+  const urlList = listArray.map((item) => {
+    const listValues = constructProps(defaultValues.queryPrams, {
+      id: item.Id,
+    });
+    // const url = buildUrl(listValues, customValues);
+    // console.log(url);
+  });
+  return urlList;
+};
+
+/**
+ * getRequest - fetch api
+ * @param {string} url
+ * @returns {object} json
+ */
+const getRequest = async (url) => {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+};
+
 /**
  * processRequest - controller function
  * @param {object} event - handle form submission
  */
-const processRequest = (event) => {
+const processRequest = async (event) => {
   event.preventDefault();
   const customValues = serializeFormData(event.target);
-  const railsQueryString = buildUrl(Api.rails, customValues);
-  console.log(railsQueryString);
+  const railsUrl = buildUrl(Api.rails, customValues);
+  const railsList = await getRequest(railsUrl).then((data) => data.Rails);
+  const tileUrlList = buildMultiUrls(Api.tiles, customValues, railsList);
+  // console.log(tileUrlList);
 };
 
 /**
@@ -72,3 +93,7 @@ const serializeFormData = (form) => {
  */
 const form = document.querySelector("#form");
 form.addEventListener("submit", processRequest);
+
+// https://rails.discovery.indazn.com/ca/v8/rails?country=br&groupId=home
+// https://rail.discovery.indazn.com/eu/v3/Rail?id=Scheduled&country=br&languageCode=en&params=PageType:Home;ContentType:None
+// https://image.discovery.indazn.com/eu/v2/eu/image/?id=78006341583_image-header_pRow_1594209231000&quality=85&width=668&height=374&resizeAction=fill&verticalAlignment=top&format=jpg
