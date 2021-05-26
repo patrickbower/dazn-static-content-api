@@ -5,17 +5,6 @@ import Api from "./api.js";
 //   .then((body) => console.log(body));
 
 /**
- * serializeFormData - serialize form data
- * @param {object} form - form data object
- * @returns {object}
- */
-const serializeFormData = (form) => {
-  const customValues = new FormData(form);
-  const formObject = Object.fromEntries(customValues);
-  return formObject;
-};
-
-/**
  * constructProps - merge custom data with defaults
  * @param {object} queryPrams
  * @param {object} customValues
@@ -57,15 +46,29 @@ const buildUrl = (defaultValues, customValues) => {
 };
 
 /**
- * initRequest - start
- * @param {object} event - triggered by form submission
+ * processRequest - controller function
+ * @param {object} event - handle form submission
  */
-const initRequest = (event) => {
+const processRequest = (event) => {
   event.preventDefault();
   const customValues = serializeFormData(event.target);
   const railsQueryString = buildUrl(Api.rails, customValues);
   console.log(railsQueryString);
 };
 
+/**
+ * serializeFormData - serialize form data
+ * @param {object} form - form data object
+ * @returns {object}
+ */
+const serializeFormData = (form) => {
+  const customValues = new FormData(form);
+  const formObject = Object.fromEntries(customValues);
+  return formObject;
+};
+
+/**
+ * Setup form submission handling
+ */
 const form = document.querySelector("#form");
-form.addEventListener("submit", initRequest);
+form.addEventListener("submit", processRequest);
