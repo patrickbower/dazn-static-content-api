@@ -1,29 +1,49 @@
 import Api from "./api.js";
+import Extract from "./extract.js";
 
 /**
- * getRequest - fetch api
+ * handleRequest - fetch api
  * @param {string} url
  * @returns {object} json
  */
-const getRequest = async (url) => {
+const handleRequest = async (url) => {
   const response = await fetch(url);
   const data = await response.json();
   return data;
 };
 
-const mergeObjects = (a, b) => {
-  const merged = { ...a, ...b };
-  return merged;
-};
-
-const getRailsData = async (railsSchema, prams) => {
+const handleRailsData = async (railsSchema, prams) => {
   const getRailData = railsSchema.map(async (rail) => {
     const railsUrl = Api.rail(rail.Id, prams.country);
-    const railData = await getRequest(railsUrl).then((data) => data);
+    const railData = await handleRequest(railsUrl).then((data) => data);
     return railData;
   });
   const railsData = await Promise.all(getRailData);
   return railsData;
+};
+
+const getData = async (prams) => {
+  const railsUrl = Api.railsSchema(prams.country);
+  const railsSchema = await handleRequest(railsUrl).then((data) => data.Rails);
+  const railsData = await handleRailsData(railsSchema, prams);
+  return railsData;
+};
+
+const addImages = (data, prams) => {
+  data.forEach((rail) => {
+    rail.tiles.forEach((tile) => {
+      const id = tile.image;
+      const { image_quality, image_width, image_height, image_format } = prams;
+      tile.image = Api.image(
+        id,
+        image_quality,
+        image_width,
+        image_height,
+        image_format
+      );
+    });
+  });
+  return data;
 };
 
 /**
@@ -32,23 +52,23 @@ const getRailsData = async (railsSchema, prams) => {
  */
 const processRequest = async (event) => {
   event.preventDefault();
-  const customPrams = serializeFormData(event.target);
-  const prams = mergeObjects(Api.prams, customPrams);
-  const railsUrl = Api.railsSchema(prams.country);
-  const railsSchema = await getRequest(railsUrl).then((data) => data.Rails);
-  const railsData = await getRailsData(railsSchema, prams);
-  console.log(railsData);
+  const prams = handleForm(event.target);
+  const rawData = await getData(prams);
+  const basicData = Extract(rawData);
+  const data = addImages(basicData, prams);
+  print(data);
 };
 
 /**
- * serializeFormData - serialize form data
+ * handleForm - serialize form data and add values to prams
  * @param {object} form - form data object
  * @returns {object}
  */
-const serializeFormData = (form) => {
+const handleForm = (form) => {
   const formData = new FormData(form);
-  const customPrams = Object.fromEntries(formData);
-  return customPrams;
+  const formVales = Object.fromEntries(formData);
+  const prams = { ...Api.prams, ...formVales };
+  return prams;
 };
 
 /**
@@ -56,3 +76,11 @@ const serializeFormData = (form) => {
  */
 const form = document.querySelector("#form");
 form.addEventListener("submit", processRequest, false);
+
+/**
+ * print - parse and pretty print to UI
+ * @param {array} json
+ */
+const print = (json) => {
+  document.querySelector("#json").innerHTML = JSON.stringify(json, null, 2);
+};

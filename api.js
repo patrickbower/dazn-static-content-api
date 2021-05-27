@@ -14,10 +14,10 @@ const rail = (rail_id, country) => {
 
 const image = (
   image_id,
-  image_quality = 85,
-  image_width = 668,
-  image_height = 374,
-  image_format = "jpg"
+  image_quality,
+  image_width,
+  image_height,
+  image_format
 ) => {
   return `https://image.discovery.indazn.com/eu/v2/eu/image/?id=${image_id}&quality=${image_quality}&width=${image_width}&height=${image_height}&resizeAction=fill&verticalAlignment=top&format=${image_format}`;
 };
