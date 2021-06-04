@@ -1,8 +1,12 @@
 # Dazn Static Content API
 
-Generate JSON schema of static content from a live DAZN homepage.
+/bundlephobia/:format/:packageName
 
-[![NPM Version][npm-image]][npm-url]
+[![npm](https://img.shields.io/npm/v/dazn-static-content-api)](https://github.com/patrickbower/dazn-static-content-api)
+
+<!-- [![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/dazn-static-content-api)](https://github.com/patrickbower/dazn-static-content-api) -->
+
+Generate JSON schema of static content from a live DAZN homepage.
 
 ## Install
 
@@ -16,7 +20,4 @@ TODO
 
 ## License
 
-[MIT](http://vjpr.mit-license.org)
-
-[npm-image]: https://img.shields.io/npm/v/live-xxx.svg
-[npm-url]: https://www.npmjs.com/package/dazn-static-content-api
+[MIT](LICENSE)
