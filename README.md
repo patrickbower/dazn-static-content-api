@@ -1,13 +1,22 @@
 # Dazn Static Content API
 
-Fetching live static rails content from the DAZN public API.
+Generate JSON schema of static content from a live DAZN homepage.
 
-## Notes
+[![NPM Version][npm-image]][npm-url]
 
-Requests for static data are done in 3 phases recursively.
+## Install
 
-1. Fetch Rails - required prams include region and page (i.e. `CA` and `home`) returning `.json` of rail including each rail id.
+```bash
+npm i dazn-static-content-api
+```
 
-2. Fetch Tiles - required prams include rail id returning `.json` of all rail content including list of image ids.
+## Usage
 
-3. Fetch Image - required prams include image id returning a `.jpg` file.
+TODO
+
+## License
+
+[MIT](http://vjpr.mit-license.org)
+
+[npm-image]: https://img.shields.io/npm/v/live-xxx.svg
+[npm-url]: https://www.npmjs.com/package/dazn-static-content-api
