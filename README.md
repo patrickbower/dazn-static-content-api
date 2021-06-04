@@ -1,7 +1,5 @@
 # Dazn Static Content API
 
-/bundlephobia/:format/:packageName
-
 [![npm](https://img.shields.io/npm/v/dazn-static-content-api)](https://github.com/patrickbower/dazn-static-content-api)
 
 <!-- [![npm bundle size (minified)](https://img.shields.io/bundlephobia/min/dazn-static-content-api)](https://github.com/patrickbower/dazn-static-content-api) -->
