@@ -1,7 +1,7 @@
 /**
  * extract - get relevant data from large schema
  * @param {array} rawData - full data dump from api
- * @returns {array}
+ * @returns {array} data
  */
 const extract = (rawData) => {
   const data = [];

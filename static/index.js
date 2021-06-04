@@ -12,6 +12,12 @@ const handleRequest = async (url) => {
   return data;
 };
 
+/**
+ * handleRailsData - loop each rail from rails schema and fetch complete data for each from api
+ * @param {array} railsSchema - basic rails data (id's) from initial DAZN api call
+ * @param {object} prams - custom prams collected by user input on form
+ * @returns {object} railsData - data returned from DAZN api on rail
+ */
 const handleRailsData = async (railsSchema, prams) => {
   const getRailData = railsSchema.map(async (rail) => {
     const railsUrl = Api.rail(rail.Id, prams.country);
@@ -22,6 +28,11 @@ const handleRailsData = async (railsSchema, prams) => {
   return railsData;
 };
 
+/**
+ * getData - process basic page schema to get rails data
+ * @param {object} prams - custom prams collected by user input on form
+ * @returns {array} railsData - complete static data for a page
+ */
 const getData = async (prams) => {
   const railsUrl = Api.railsSchema(prams.country);
   const railsSchema = await handleRequest(railsUrl).then((data) => data.Rails);
@@ -29,6 +40,12 @@ const getData = async (prams) => {
   return railsData;
 };
 
+/**
+ * addImages - generate image urls from id's
+ * @param {array} data - custom json data created from previous api calls
+ * @param {object} prams - custom prams collected by user input on form
+ * @returns {array} data - added image urls to custom json data created from previous api calls
+ */
 const addImages = (data, prams) => {
   data.forEach((rail) => {
     rail.tiles.forEach((tile) => {
@@ -60,9 +77,9 @@ const processRequest = async (event) => {
 };
 
 /**
- * handleForm - serialize form data and add values to prams
+ * handleForm - serialize form data and add values from form to default prams
  * @param {object} form - form data object
- * @returns {object}
+ * @returns {object} prams - custom prams collected by user input on form
  */
 const handleForm = (form) => {
   const formData = new FormData(form);
