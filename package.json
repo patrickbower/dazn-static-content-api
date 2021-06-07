@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Fetching live static rails content from the DAZN public API",
   "license": "MIT",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc -w"
   },
   "repository": {
     "type": "git",
