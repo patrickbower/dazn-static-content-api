@@ -1,0 +1,23 @@
+pre {
+  background-color: #f6f6f6;
+  padding: 20px;
+  max-width: 100vw;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+button {
+  font-size: x-large;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+}
+
+label {
+  display: block;
+}
+
+
+/*# sourceMappingURL=/styles.8986bff4.css.map */
