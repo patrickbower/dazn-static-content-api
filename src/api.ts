@@ -1,28 +1,33 @@
-const prams = {
-  country: undefined,
-  rail_id: undefined,
-  image_id: undefined,
+const prams: { country: string; rail_id: string; image_id: string } = {
+  country: "",
+  rail_id: "",
+  image_id: "",
 };
 
-const railsSchema = (country) => {
+const railsSchema = (country: string) => {
   return `https://rails.discovery.indazn.com/ca/v8/rails?country=${country}&groupId=home`;
 };
 
-const rail = (rail_id, country) => {
+const rail = (rail_id: string, country: string) => {
   return `https://rail.discovery.indazn.com/eu/v3/Rail?id=${rail_id}&country=${country}&languageCode=en&params=PageType:Home;ContentType:None`;
 };
 
 const image = (
-  image_id,
-  image_quality,
-  image_width,
-  image_height,
-  image_format
+  image_id: string,
+  image_quality: number,
+  image_width: number,
+  image_height: number,
+  image_format: string
 ) => {
   return `https://image.discovery.indazn.com/eu/v2/eu/image/?id=${image_id}&quality=${image_quality}&width=${image_width}&height=${image_height}&resizeAction=fill&verticalAlignment=top&format=${image_format}`;
 };
 
-export default { prams, railsSchema, rail, image };
+export = {
+  prams,
+  railsSchema,
+  rail,
+  image,
+};
 
 // https://rails.discovery.indazn.com/ca/v8/rails?country=br&groupId=home
 // https://rail.discovery.indazn.com/eu/v3/Rail?id=Scheduled&country=br&languageCode=en&params=PageType:Home;ContentType:None

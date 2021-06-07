@@ -1,18 +1,18 @@
 declare module "api" {
     const _default: {
         prams: {
-            country: any;
-            rail_id: any;
-            image_id: any;
+            country: string;
+            rail_id: string;
+            image_id: string;
         };
-        railsSchema: (country: any) => string;
-        rail: (rail_id: any, country: any) => string;
-        image: (image_id: any, image_quality: any, image_width: any, image_height: any, image_format: any) => string;
+        railsSchema: (country: string) => string;
+        rail: (rail_id: string, country: string) => string;
+        image: (image_id: string, image_quality: number, image_width: number, image_height: number, image_format: string) => string;
     };
-    export default _default;
+    export = _default;
 }
 declare module "extract" {
     const extract: (rawData: any) => object[];
-    export default extract;
+    export = extract;
 }
 declare module "index" { }

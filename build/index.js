@@ -47,11 +47,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 define("api", ["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
     var prams = {
-        country: undefined,
-        rail_id: undefined,
-        image_id: undefined
+        country: "",
+        rail_id: "",
+        image_id: ""
     };
     var railsSchema = function (country) {
         return "https://rails.discovery.indazn.com/ca/v8/rails?country=" + country + "&groupId=home";
@@ -62,11 +61,15 @@ define("api", ["require", "exports"], function (require, exports) {
     var image = function (image_id, image_quality, image_width, image_height, image_format) {
         return "https://image.discovery.indazn.com/eu/v2/eu/image/?id=" + image_id + "&quality=" + image_quality + "&width=" + image_width + "&height=" + image_height + "&resizeAction=fill&verticalAlignment=top&format=" + image_format;
     };
-    exports["default"] = { prams: prams, railsSchema: railsSchema, rail: rail, image: image };
+    return {
+        prams: prams,
+        railsSchema: railsSchema,
+        rail: rail,
+        image: image
+    };
 });
 define("extract", ["require", "exports"], function (require, exports) {
     "use strict";
-    exports.__esModule = true;
     var extract = function (rawData) {
         var data = [];
         rawData.forEach(function (rawRail) {
@@ -87,9 +90,9 @@ define("extract", ["require", "exports"], function (require, exports) {
         });
         return data;
     };
-    exports["default"] = extract;
+    return extract;
 });
-define("index", ["require", "exports", "api", "extract"], function (require, exports, api_1, extract_1) {
+define("index", ["require", "exports", "api", "extract"], function (require, exports, Api, Extract) {
     "use strict";
     exports.__esModule = true;
     var handleRequest = function (url) { return __awaiter(void 0, void 0, void 0, function () {
@@ -116,7 +119,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    railsUrl = api_1["default"].rail(rail.Id, prams.country);
+                                    railsUrl = Api.rail(rail.Id, prams.country);
                                     return [4, handleRequest(railsUrl).then(function (data) { return data; })];
                                 case 1:
                                     railData = _a.sent();
@@ -136,7 +139,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    railsUrl = api_1["default"].railsSchema(prams.country);
+                    railsUrl = Api.railsSchema(prams.country);
                     return [4, handleRequest(railsUrl).then(function (data) { return data.Rails; })];
                 case 1:
                     railsSchema = _a.sent();
@@ -148,11 +151,11 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
         });
     }); };
     var addImages = function (data, prams) {
+        var image_quality = prams.image_quality, image_width = prams.image_width, image_height = prams.image_height, image_format = prams.image_format;
         data.forEach(function (rail) {
             rail.tiles.forEach(function (tile) {
                 var id = tile.image;
-                var image_quality = prams.image_quality, image_width = prams.image_width, image_height = prams.image_height, image_format = prams.image_format;
-                tile.image = api_1["default"].image(id, image_quality, image_width, image_height, image_format);
+                tile.image = Api.image(id, image_quality, image_width, image_height, image_format);
             });
         });
         return data;
@@ -167,7 +170,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
                     return [4, getData(prams)];
                 case 1:
                     rawData = _a.sent();
-                    basicData = extract_1["default"](rawData);
+                    basicData = Extract(rawData);
                     data = addImages(basicData, prams);
                     print(data);
                     return [2];
@@ -177,7 +180,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
     var handleForm = function (form) {
         var formData = new FormData(form);
         var formVales = Object.fromEntries(formData);
-        var prams = __assign(__assign({}, api_1["default"].prams), formVales);
+        var prams = __assign(__assign({}, Api.prams), formVales);
         return prams;
     };
     var form = document.querySelector("#form");

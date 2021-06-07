@@ -1,6 +1,6 @@
 // TODO: change to Node require pattern
-import Api from "./api";
-import Extract from "./extract";
+import Api = require("./api");
+import Extract = require("./extract");
 
 // TODO: change to use Node ... for fetching
 
@@ -8,6 +8,7 @@ import Extract from "./extract";
 const handleRequest = async (url: string): Promise<object> => {
   const response = await fetch(url);
   const data = await response.json();
+
   return data;
 };
 
@@ -26,6 +27,7 @@ const handleRailsData = async (
     const railData = await handleRequest(railsUrl).then((data) => data);
     return railData;
   });
+
   const railsData = await Promise.all(getRailData);
   return railsData;
 };
@@ -40,6 +42,7 @@ const getData = async (prams) => {
   const railsSchema = await handleRequest(railsUrl).then(
     (data: { Rails: object[] }) => data.Rails
   );
+
   const railsData = await handleRailsData(railsSchema, prams);
   return railsData;
 };
@@ -51,10 +54,10 @@ const getData = async (prams) => {
  * @returns data - added image urls to custom json data created from previous api calls
  */
 const addImages = (data, prams) => {
+  const { image_quality, image_width, image_height, image_format } = prams;
   data.forEach((rail) => {
-    rail.tiles.forEach((tile) => {
+    rail.tiles.forEach((tile: { image: string }) => {
       const id = tile.image;
-      const { image_quality, image_width, image_height, image_format } = prams;
       tile.image = Api.image(
         id,
         image_quality,
@@ -90,10 +93,13 @@ interface Prams {
   country: string;
   rail_id: string;
   image_id: string;
-  // image_quality: number;
-  // image_width: number;
-  // image_height: number;
-  // image_format: string;
+}
+
+interface Images {
+  image_quality: number;
+  image_width: number;
+  image_height: number;
+  image_format: string;
 }
 const handleForm = (form) => {
   const formData: any = new FormData(form);
