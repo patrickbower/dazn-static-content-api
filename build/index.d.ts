@@ -12,7 +12,7 @@ declare module "api" {
     export default _default;
 }
 declare module "extract" {
-    const extract: (rawData: any) => any[];
+    const extract: (rawData: any) => object[];
     export default extract;
 }
 declare module "index" { }

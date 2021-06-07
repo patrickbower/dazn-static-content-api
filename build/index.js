@@ -70,15 +70,17 @@ define("extract", ["require", "exports"], function (require, exports) {
     var extract = function (rawData) {
         var data = [];
         rawData.forEach(function (rawRail) {
-            var rail = {};
-            rail.id = rawRail.Id;
-            rail.title = rawRail.Title;
-            rail.tiles = [];
+            var rail = {
+                id: rawRail.Id,
+                title: rawRail.Title,
+                tiles: []
+            };
             rawRail.Tiles.forEach(function (rawTile) {
-                var tile = {};
-                tile.id = rawTile.Id;
-                tile.title = rawTile.Title;
-                tile.image = rawTile.Image.Id;
+                var tile = {
+                    id: rawTile.Id,
+                    title: rawTile.Title,
+                    image: rawTile.Image.Id
+                };
                 rail.tiles.push(tile);
             });
             data.push(rail);
@@ -87,7 +89,7 @@ define("extract", ["require", "exports"], function (require, exports) {
     };
     exports["default"] = extract;
 });
-define("index", ["require", "exports", "api", "extract"], function (require, exports, api_js_1, extract_js_1) {
+define("index", ["require", "exports", "api", "extract"], function (require, exports, api_1, extract_1) {
     "use strict";
     exports.__esModule = true;
     var handleRequest = function (url) { return __awaiter(void 0, void 0, void 0, function () {
@@ -114,7 +116,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
                         return __generator(this, function (_a) {
                             switch (_a.label) {
                                 case 0:
-                                    railsUrl = api_js_1["default"].rail(rail.Id, prams.country);
+                                    railsUrl = api_1["default"].rail(rail.Id, prams.country);
                                     return [4, handleRequest(railsUrl).then(function (data) { return data; })];
                                 case 1:
                                     railData = _a.sent();
@@ -134,7 +136,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    railsUrl = api_js_1["default"].railsSchema(prams.country);
+                    railsUrl = api_1["default"].railsSchema(prams.country);
                     return [4, handleRequest(railsUrl).then(function (data) { return data.Rails; })];
                 case 1:
                     railsSchema = _a.sent();
@@ -150,7 +152,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
             rail.tiles.forEach(function (tile) {
                 var id = tile.image;
                 var image_quality = prams.image_quality, image_width = prams.image_width, image_height = prams.image_height, image_format = prams.image_format;
-                tile.image = api_js_1["default"].image(id, image_quality, image_width, image_height, image_format);
+                tile.image = api_1["default"].image(id, image_quality, image_width, image_height, image_format);
             });
         });
         return data;
@@ -165,7 +167,7 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
                     return [4, getData(prams)];
                 case 1:
                     rawData = _a.sent();
-                    basicData = extract_js_1["default"](rawData);
+                    basicData = extract_1["default"](rawData);
                     data = addImages(basicData, prams);
                     print(data);
                     return [2];
@@ -175,10 +177,13 @@ define("index", ["require", "exports", "api", "extract"], function (require, exp
     var handleForm = function (form) {
         var formData = new FormData(form);
         var formVales = Object.fromEntries(formData);
-        var prams = __assign(__assign({}, api_js_1["default"].prams), formVales);
+        var prams = __assign(__assign({}, api_1["default"].prams), formVales);
         return prams;
     };
     var form = document.querySelector("#form");
     form.addEventListener("submit", processRequest, false);
+    var print = function (json) {
+        document.querySelector("#json").innerHTML = JSON.stringify(json, null, 2);
+    };
 });
 //# sourceMappingURL=index.js.map

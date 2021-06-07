@@ -3,22 +3,24 @@
  * @param {array} rawData - full data dump from api
  * @returns {array} data
  */
-const extract = (rawData) => {
-  const data = [];
+const extract = (rawData: any) => {
+  const data: object[] = [];
   // loop rail array
-  rawData.forEach((rawRail) => {
+  rawData.forEach((rawRail: any) => {
     // extract rail data
-    const rail = {};
-    rail.id = rawRail.Id;
-    rail.title = rawRail.Title;
+    const rail: { id: string; title: string; tiles: object[] } = {
+      id: rawRail.Id,
+      title: rawRail.Title,
+      tiles: [],
+    };
     // loop tile array
-    rail.tiles = [];
     rawRail.Tiles.forEach((rawTile) => {
       // extract tile data
-      const tile = {};
-      tile.id = rawTile.Id;
-      tile.title = rawTile.Title;
-      tile.image = rawTile.Image.Id;
+      const tile: { id: string; title: string; image: string } = {
+        id: rawTile.Id,
+        title: rawTile.Title,
+        image: rawTile.Image.Id,
+      };
       rail.tiles.push(tile);
     });
     data.push(rail);

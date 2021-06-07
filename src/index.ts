@@ -1,6 +1,6 @@
 // TODO: change to Node require pattern
-import Api from "./api.js";
-import Extract from "./extract.js";
+import Api from "./api";
+import Extract from "./extract";
 
 // TODO: change to use Node ... for fetching
 
@@ -13,15 +13,15 @@ const handleRequest = async (url: string): Promise<object> => {
 
 /**
  * handleRailsData - loop each rail from rails schema and fetch complete data for each from api
- * @param {array} railsSchema - basic rails data (id's) from initial DAZN api call
- * @param {object} prams - custom prams collected by user input on form
- * @returns {object} railsData - data returned from DAZN api on rail
+ * @param railsSchema - basic rails data (id's) from initial DAZN api call
+ * @param prams - custom prams collected by user input on form
+ * @returns railsData - data returned from DAZN api on rail
  */
 const handleRailsData = async (
   railsSchema: Array<object>,
-  prams: object
+  prams: Prams
 ): Promise<object> => {
-  const getRailData = railsSchema.map(async (rail) => {
+  const getRailData = railsSchema.map(async (rail: { Id: string }) => {
     const railsUrl = Api.rail(rail.Id, prams.country);
     const railData = await handleRequest(railsUrl).then((data) => data);
     return railData;
@@ -32,21 +32,23 @@ const handleRailsData = async (
 
 /**
  * getData - process basic page schema to get rails data
- * @param {object} prams - custom prams collected by user input on form
- * @returns {array} railsData - complete static data for a page
+ * @param prams - custom prams collected by user input on form
+ * @returns railsData - complete static data for a page
  */
 const getData = async (prams) => {
   const railsUrl = Api.railsSchema(prams.country);
-  const railsSchema = await handleRequest(railsUrl).then((data) => data.Rails);
+  const railsSchema = await handleRequest(railsUrl).then(
+    (data: { Rails: object[] }) => data.Rails
+  );
   const railsData = await handleRailsData(railsSchema, prams);
   return railsData;
 };
 
 /**
  * addImages - generate image urls from id's
- * @param {array} data - custom json data created from previous api calls
- * @param {object} prams - custom prams collected by user input on form
- * @returns {array} data - added image urls to custom json data created from previous api calls
+ * @param data - custom json data created from previous api calls
+ * @param prams - custom prams collected by user input on form
+ * @returns data - added image urls to custom json data created from previous api calls
  */
 const addImages = (data, prams) => {
   data.forEach((rail) => {
@@ -67,7 +69,7 @@ const addImages = (data, prams) => {
 
 /**
  * processRequest - controller function
- * @param {object} event - handle form submission
+ * @param event - handle form submission
  */
 const processRequest = async (event) => {
   event.preventDefault();
@@ -81,13 +83,22 @@ const processRequest = async (event) => {
 // TODO: what values do we need from the form to make a request? These will need to the made available via another means into NPM package (i.e args).
 /**
  * handleForm - serialize form data and add values from form to default prams
- * @param {object} form - form data object
- * @returns {object} prams - custom prams collected by user input on form
+ * @param form - form data object
+ * @returns prams - custom prams collected by user input on form
  */
+interface Prams {
+  country: string;
+  rail_id: string;
+  image_id: string;
+  // image_quality: number;
+  // image_width: number;
+  // image_height: number;
+  // image_format: string;
+}
 const handleForm = (form) => {
-  const formData = new FormData(form);
+  const formData: any = new FormData(form);
   const formVales = Object.fromEntries(formData);
-  const prams = { ...Api.prams, ...formVales };
+  const prams: Prams = { ...Api.prams, ...formVales };
   return prams;
 };
 
@@ -102,3 +113,7 @@ form.addEventListener("submit", processRequest, false);
 // TODO: generate output - json file (and where) or just data?
 
 // TODO: does it need incremental feedback (i.e. console.logs)?
+
+const print: any = (json) => {
+  document.querySelector("#json").innerHTML = JSON.stringify(json, null, 2);
+};
