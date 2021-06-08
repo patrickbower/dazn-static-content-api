@@ -22,7 +22,7 @@ const image = (
   return `https://image.discovery.indazn.com/eu/v2/eu/image/?id=${image_id}&quality=${image_quality}&width=${image_width}&height=${image_height}&resizeAction=fill&verticalAlignment=top&format=${image_format}`;
 };
 
-export = {
+export default {
   prams,
   railsSchema,
   rail,

@@ -1,6 +1,6 @@
 // TODO: change to Node require pattern
-import Api = require("./api");
-import Extract = require("./extract");
+import Api from "./api";
+import Extract from "./extract";
 
 // TODO: change to use Node ... for fetching
 
@@ -22,8 +22,12 @@ const handleRailsData = async (
   railsSchema: Array<object>,
   prams: Prams
 ): Promise<object> => {
-  const getRailData = railsSchema.map(async (rail: { Id: string }) => {
-    const railsUrl = Api.rail(rail.Id, prams.country);
+  const getRailData = railsSchema.map(async (rail: ValidObject | {}) => {
+    const id = rail.Id;
+    const country = prams.country;
+
+    const railsUrl = Api.rail(id, country);
+
     const railData = await handleRequest(railsUrl).then((data) => data);
     return railData;
   });
@@ -37,7 +41,7 @@ const handleRailsData = async (
  * @param prams - custom prams collected by user input on form
  * @returns railsData - complete static data for a page
  */
-const getData = async (prams) => {
+const getData = async (prams: { country: string }) => {
   const railsUrl = Api.railsSchema(prams.country);
   const railsSchema = await handleRequest(railsUrl).then(
     (data: { Rails: object[] }) => data.Rails

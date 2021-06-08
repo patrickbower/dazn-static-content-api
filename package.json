@@ -1,23 +1,20 @@
 {
   "name": "dazn-static-content-api",
   "version": "1.0.0",
-  "description": "Fetching live static rails content from the DAZN public API",
-  "license": "MIT",
-  "main": "build/index.js",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc -w",
-    "dev": "parcel watch ./src/index.html",
-    "build": "parcel build ./build/index.html"
+    "clean": "rm dist/bundle.js",
+    "start": "parcel src/index.html",
+    "build-prod": "parcel build src/index.html"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/patrickbower/dazn-static-content-api.git"
-  },
-  "author": "Patrick Bower",
-  "homepage": "https://github.com/patrickbower/dazn-static-content-api#readme",
+  "dependencies": {},
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
+    "prettier": "^2.3.1",
     "typescript": "^4.3.2"
   }
 }

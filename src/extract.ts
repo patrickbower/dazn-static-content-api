@@ -28,4 +28,4 @@ const extract = (rawData: any) => {
   return data;
 };
 
-export = extract;
+export default extract;

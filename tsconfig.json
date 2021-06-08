@@ -1,19 +1,15 @@
-// after tsc command run we should see 3 new files (https://dirask.com/posts/TypeScript-compile-all-ts-files-to-one-js-PpObZD)
-// 1. out.d.ts contains all declarations (useful for intellisense and integration out.js file with other typescript projects)
-// 2. out.js.map contains development mapping for debug process
-// 3. out.js contains all source code transpile to single javascript file
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
-    "module": "amd",
-    "removeComments": true,
-    "outFile": "./build/index.js",
-    "baseUrl": "./",
+    "outDir": "./dist/",
     "sourceMap": true,
-    "alwaysStrict": true,
-    "declaration": true
-    // "noImplicitAny": true
+    "strict": true,
+    "noImplicitReturns": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "moduleResolution": "node",
+    "target": "es5",
+    "allowJs": true,
+    "lib": ["ESNext", "DOM"]
   },
-  "include": ["./src/*.ts"],
-  "exclude": ["./build.d.ts"]
+  "include": ["./src/*"]
 }

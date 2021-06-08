@@ -117,9 +117,91 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"index.ts":[function(require,module,exports) {
-var define;
-var __assign = this && this.__assign || function () {
+})({"api.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+var prams = {
+  country: "",
+  rail_id: "",
+  image_id: ""
+};
+
+var railsSchema = function railsSchema(country) {
+  return "https://rails.discovery.indazn.com/ca/v8/rails?country=" + country + "&groupId=home";
+};
+
+var rail = function rail(rail_id, country) {
+  return "https://rail.discovery.indazn.com/eu/v3/Rail?id=" + rail_id + "&country=" + country + "&languageCode=en&params=PageType:Home;ContentType:None";
+};
+
+var image = function image(image_id, image_quality, image_width, image_height, image_format) {
+  return "https://image.discovery.indazn.com/eu/v2/eu/image/?id=" + image_id + "&quality=" + image_quality + "&width=" + image_width + "&height=" + image_height + "&resizeAction=fill&verticalAlignment=top&format=" + image_format;
+};
+
+var _default = {
+  prams: prams,
+  railsSchema: railsSchema,
+  rail: rail,
+  image: image
+}; // https://rails.discovery.indazn.com/ca/v8/rails?country=br&groupId=home
+// https://rail.discovery.indazn.com/eu/v3/Rail?id=Scheduled&country=br&languageCode=en&params=PageType:Home;ContentType:None
+// https://image.discovery.indazn.com/eu/v2/eu/image/?id=78006341583_image-header_pRow_1594209231000&quality=85&width=668&height=374&resizeAction=fill&verticalAlignment=top&format=jpg
+
+exports.default = _default;
+},{}],"extract.ts":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+/**
+ * extract - get relevant data from large schema
+ * @param {array} rawData - full data dump from api
+ * @returns {array} data
+ */
+var extract = function extract(rawData) {
+  var data = []; // loop rail array
+
+  rawData.forEach(function (rawRail) {
+    // extract rail data
+    var rail = {
+      id: rawRail.Id,
+      title: rawRail.Title,
+      tiles: []
+    }; // loop tile array
+
+    rawRail.Tiles.forEach(function (rawTile) {
+      // extract tile data
+      var tile = {
+        id: rawTile.Id,
+        title: rawTile.Title,
+        image: rawTile.Image.Id
+      };
+      rail.tiles.push(tile);
+    });
+    data.push(rail);
+  });
+  return data;
+};
+
+var _default = extract;
+exports.default = _default;
+},{}],"index.ts":[function(require,module,exports) {
+"use strict";
+
+var _api = _interopRequireDefault(require("./api"));
+
+var _extract = _interopRequireDefault(require("./extract"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __assign = void 0 && (void 0).__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
       s = arguments[i];
@@ -135,7 +217,7 @@ var __assign = this && this.__assign || function () {
   return __assign.apply(this, arguments);
 };
 
-var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, generator) {
+var __awaiter = void 0 && (void 0).__awaiter || function (thisArg, _arguments, P, generator) {
   function adopt(value) {
     return value instanceof P ? value : new P(function (resolve) {
       resolve(value);
@@ -167,7 +249,7 @@ var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, gene
   });
 };
 
-var __generator = this && this.__generator || function (thisArg, body) {
+var __generator = void 0 && (void 0).__generator || function (thisArg, body) {
   var _ = {
     label: 0,
     sent: function sent() {
@@ -276,144 +358,196 @@ var __generator = this && this.__generator || function (thisArg, body) {
       done: true
     };
   }
-};
+}; // TODO: change to Node require pattern
 
-define(["require", "exports", "./api", "./extract"], function (require, exports, Api, Extract) {
-  "use strict";
 
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
+// TODO: change to use Node ... for fetching
+// fetch api
+var handleRequest = function handleRequest(url) {
+  return __awaiter(void 0, void 0, Promise, function () {
+    var response, data;
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          return [4
+          /*yield*/
+          , fetch(url)];
 
-  var handleRequest = function handleRequest(url) {
-    return __awaiter(void 0, void 0, Promise, function () {
-      var response, data;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            return [4, fetch(url)];
+        case 1:
+          response = _a.sent();
+          return [4
+          /*yield*/
+          , response.json()];
 
-          case 1:
-            response = _a.sent();
-            return [4, response.json()];
-
-          case 2:
-            data = _a.sent();
-            return [2, data];
-        }
-      });
+        case 2:
+          data = _a.sent();
+          return [2
+          /*return*/
+          , data];
+      }
     });
-  };
+  });
+};
+/**
+ * handleRailsData - loop each rail from rails schema and fetch complete data for each from api
+ * @param railsSchema - basic rails data (id's) from initial DAZN api call
+ * @param prams - custom prams collected by user input on form
+ * @returns railsData - data returned from DAZN api on rail
+ */
 
-  var handleRailsData = function handleRailsData(railsSchema, prams) {
-    return __awaiter(void 0, void 0, Promise, function () {
-      var getRailData, railsData;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            getRailData = railsSchema.map(function (rail) {
-              return __awaiter(void 0, void 0, void 0, function () {
-                var railsUrl, railData;
-                return __generator(this, function (_a) {
-                  switch (_a.label) {
-                    case 0:
-                      railsUrl = Api.rail(rail.Id, prams.country);
-                      return [4, handleRequest(railsUrl).then(function (data) {
-                        return data;
-                      })];
 
-                    case 1:
-                      railData = _a.sent();
-                      return [2, railData];
-                  }
-                });
+var handleRailsData = function handleRailsData(railsSchema, prams) {
+  return __awaiter(void 0, void 0, Promise, function () {
+    var getRailData, railsData;
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          getRailData = railsSchema.map(function (rail) {
+            return __awaiter(void 0, void 0, void 0, function () {
+              var id, country, railsUrl, railData;
+              return __generator(this, function (_a) {
+                switch (_a.label) {
+                  case 0:
+                    id = rail.Id;
+                    country = prams.country;
+                    railsUrl = _api.default.rail(id, country);
+                    return [4
+                    /*yield*/
+                    , handleRequest(railsUrl).then(function (data) {
+                      return data;
+                    })];
+
+                  case 1:
+                    railData = _a.sent();
+                    return [2
+                    /*return*/
+                    , railData];
+                }
               });
             });
-            return [4, Promise.all(getRailData)];
+          });
+          return [4
+          /*yield*/
+          , Promise.all(getRailData)];
 
-          case 1:
-            railsData = _a.sent();
-            return [2, railsData];
-        }
-      });
+        case 1:
+          railsData = _a.sent();
+          return [2
+          /*return*/
+          , railsData];
+      }
     });
-  };
+  });
+};
+/**
+ * getData - process basic page schema to get rails data
+ * @param prams - custom prams collected by user input on form
+ * @returns railsData - complete static data for a page
+ */
 
-  var getData = function getData(prams) {
-    return __awaiter(void 0, void 0, void 0, function () {
-      var railsUrl, railsSchema, railsData;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            railsUrl = Api.railsSchema(prams.country);
-            return [4, handleRequest(railsUrl).then(function (data) {
-              return data.Rails;
-            })];
 
-          case 1:
-            railsSchema = _a.sent();
-            return [4, handleRailsData(railsSchema, prams)];
+var getData = function getData(prams) {
+  return __awaiter(void 0, void 0, void 0, function () {
+    var railsUrl, railsSchema, railsData;
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          railsUrl = _api.default.railsSchema(prams.country);
+          return [4
+          /*yield*/
+          , handleRequest(railsUrl).then(function (data) {
+            return data.Rails;
+          })];
 
-          case 2:
-            railsData = _a.sent();
-            return [2, railsData];
-        }
-      });
+        case 1:
+          railsSchema = _a.sent();
+          return [4
+          /*yield*/
+          , handleRailsData(railsSchema, prams)];
+
+        case 2:
+          railsData = _a.sent();
+          return [2
+          /*return*/
+          , railsData];
+      }
     });
-  };
+  });
+};
+/**
+ * addImages - generate image urls from id's
+ * @param data - custom json data created from previous api calls
+ * @param prams - custom prams collected by user input on form
+ * @returns data - added image urls to custom json data created from previous api calls
+ */
 
-  var addImages = function addImages(data, prams) {
-    var image_quality = prams.image_quality,
-        image_width = prams.image_width,
-        image_height = prams.image_height,
-        image_format = prams.image_format;
-    data.forEach(function (rail) {
-      rail.tiles.forEach(function (tile) {
-        var id = tile.image;
-        tile.image = Api.image(id, image_quality, image_width, image_height, image_format);
-      });
+
+var addImages = function addImages(data, prams) {
+  var image_quality = prams.image_quality,
+      image_width = prams.image_width,
+      image_height = prams.image_height,
+      image_format = prams.image_format;
+  data.forEach(function (rail) {
+    rail.tiles.forEach(function (tile) {
+      var id = tile.image;
+      tile.image = _api.default.image(id, image_quality, image_width, image_height, image_format);
     });
-    return data;
-  };
+  });
+  return data;
+};
+/**
+ * processRequest - controller function
+ * @param event - handle form submission
+ */
 
-  var processRequest = function processRequest(event) {
-    return __awaiter(void 0, void 0, void 0, function () {
-      var prams, rawData, basicData, data;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            event.preventDefault();
-            prams = handleForm(event.target);
-            return [4, getData(prams)];
 
-          case 1:
-            rawData = _a.sent();
-            basicData = Extract(rawData);
-            data = addImages(basicData, prams);
-            print(data);
-            return [2];
-        }
-      });
+var processRequest = function processRequest(event) {
+  return __awaiter(void 0, void 0, void 0, function () {
+    var prams, rawData, basicData, data;
+    return __generator(this, function (_a) {
+      switch (_a.label) {
+        case 0:
+          event.preventDefault();
+          prams = handleForm(event.target);
+          return [4
+          /*yield*/
+          , getData(prams)];
+
+        case 1:
+          rawData = _a.sent();
+          basicData = (0, _extract.default)(rawData);
+          data = addImages(basicData, prams);
+          print(data);
+          return [2
+          /*return*/
+          ];
+      }
     });
-  };
+  });
+};
 
-  var handleForm = function handleForm(form) {
-    var formData = new FormData(form);
-    var formVales = Object.fromEntries(formData);
+var handleForm = function handleForm(form) {
+  var formData = new FormData(form);
+  var formVales = Object.fromEntries(formData);
 
-    var prams = __assign(__assign({}, Api.prams), formVales);
+  var prams = __assign(__assign({}, _api.default.prams), formVales);
 
-    return prams;
-  };
+  return prams;
+}; // TODO: scrap form
 
-  var form = document.querySelector("#form");
-  form.addEventListener("submit", processRequest, false);
+/**
+ * Setup form submission handling
+ */
 
-  var print = function print(json) {
-    document.querySelector("#json").innerHTML = JSON.stringify(json, null, 2);
-  };
-});
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+var form = document.querySelector("#form");
+form.addEventListener("submit", processRequest, false); // TODO: generate output - json file (and where) or just data?
+// TODO: does it need incremental feedback (i.e. console.logs)?
+
+var print = function print(json) {
+  document.querySelector("#json").innerHTML = JSON.stringify(json, null, 2);
+};
+},{"./api":"api.ts","./extract":"extract.ts"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -441,7 +575,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54617" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57477" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
