@@ -1,16 +1,30 @@
 {
   "name": "dazn-static-content-api",
-  "version": "1.0.0",
-  "description": "Fetching live static rails content from the DAZN public API",
-  "license": "MIT",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/patrickbower/dazn-static-content-api.git"
   },
   "author": "Patrick Bower",
-  "homepage": "https://github.com/patrickbower/dazn-static-content-api#readme"
+  "homepage": "https://github.com/patrickbower/dazn-static-content-api#readme",
+  "version": "1.0.0",
+  "description": "Fetching live static rails content from the DAZN public API",
+  "main": "index.js",
+  "browserslist": [
+    "last 1 Chrome version"
+  ],
+  "keywords": [],
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "parcel src/index.html",
+    "build-prod": "parcel build src/index.html"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "eslint": "^7.28.0",
+    "prettier": "^2.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0"
+  }
 }

@@ -1,6 +1,8 @@
+// TODO: change to Node require pattern
 import Api from "./api.js";
 import Extract from "./extract.js";
 
+// TODO: change to use Node ... for fetching
 /**
  * handleRequest - fetch api
  * @param {string} url
@@ -76,6 +78,7 @@ const processRequest = async (event) => {
   print(data);
 };
 
+// TODO: what values do we need from the form to make a request? These will need to the made available via another means into NPM package (i.e args).
 /**
  * handleForm - serialize form data and add values from form to default prams
  * @param {object} form - form data object
@@ -87,6 +90,8 @@ const handleForm = (form) => {
   const prams = { ...Api.prams, ...formVales };
   return prams;
 };
+
+// TODO: scrap form
 
 /**
  * Setup form submission handling
@@ -101,3 +106,7 @@ form.addEventListener("submit", processRequest, false);
 const print = (json) => {
   document.querySelector("#json").innerHTML = JSON.stringify(json, null, 2);
 };
+
+// TODO: generate output - json file (and where) or just data?
+
+// TODO: does it need incremental feedback (i.e. console.logs)?
