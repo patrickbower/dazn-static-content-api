@@ -22,7 +22,9 @@ const handleRequest = async (url) => {
  */
 const handleRailsData = async (railsSchema, prams) => {
   const getRailData = railsSchema.map(async (rail) => {
-    const railsUrl = Api.rail(rail.Id, prams.country);
+    const { Id } = rail;
+    const { country } = prams;
+    const railsUrl = Api.rail(Id, country);
     const railData = await handleRequest(railsUrl).then((data) => data);
     return railData;
   });
@@ -36,7 +38,8 @@ const handleRailsData = async (railsSchema, prams) => {
  * @returns {array} railsData - complete static data for a page
  */
 const getData = async (prams) => {
-  const railsUrl = Api.railsSchema(prams.country);
+  const { country } = prams;
+  const railsUrl = Api.railsSchema(country);
   const railsSchema = await handleRequest(railsUrl).then((data) => data.Rails);
   const railsData = await handleRailsData(railsSchema, prams);
   return railsData;
@@ -49,18 +52,16 @@ const getData = async (prams) => {
  * @returns {array} data - added image urls to custom json data created from previous api calls
  */
 const addImages = (data, prams) => {
-  data.forEach((rail) => {
-    rail.tiles.forEach((tile) => {
-      const id = tile.image;
-      const { image_quality, image_width, image_height, image_format } = prams;
-      tile.image = Api.image(
-        id,
-        image_quality,
-        image_width,
-        image_height,
-        image_format
-      );
-    });
+  data.forEach((tile) => {
+    const { image_id } = tile;
+    const { image_quality, image_width, image_height, image_format } = prams;
+    tile.image_url = Api.image(
+      image_id,
+      image_quality,
+      image_width,
+      image_height,
+      image_format
+    );
   });
   return data;
 };
@@ -82,13 +83,12 @@ const processRequest = async (event) => {
 /**
  * handleForm - serialize form data and add values from form to default prams
  * @param {object} form - form data object
- * @returns {object} prams - custom prams collected by user input on form
+ * @returns {object} data - custom prams collected by user input on form
  */
 const handleForm = (form) => {
   const formData = new FormData(form);
-  const formVales = Object.fromEntries(formData);
-  const prams = { ...Api.prams, ...formVales };
-  return prams;
+  const data = Object.fromEntries(formData);
+  return data;
 };
 
 // TODO: scrap form
@@ -103,8 +103,8 @@ form.addEventListener("submit", processRequest, false);
  * print - parse and pretty print to UI
  * @param {array} json
  */
-const print = (json) => {
-  document.querySelector("#json").innerHTML = JSON.stringify(json, null, 2);
+const print = (data) => {
+  document.querySelector("#json").innerHTML = JSON.stringify(data, null, 2);
 };
 
 // TODO: generate output - json file (and where) or just data?

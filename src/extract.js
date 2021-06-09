@@ -4,26 +4,26 @@
  * @returns {array} data
  */
 const extract = (rawData) => {
-  const data = [];
+  // const data = [];
   // loop rail array
-  rawData.forEach((rawRail) => {
+  const tiles = rawData.map((rawRail) => {
     // extract rail data
-    const rail = {};
-    rail.id = rawRail.Id;
-    rail.title = rawRail.Title;
+    const rail = {
+      rail_id: rawRail.Id,
+      rail_title: rawRail.Title,
+    };
     // loop tile array
-    rail.tiles = [];
-    rawRail.Tiles.forEach((rawTile) => {
-      // extract tile data
-      const tile = {};
-      tile.id = rawTile.Id;
-      tile.title = rawTile.Title;
-      tile.image = rawTile.Image.Id;
-      rail.tiles.push(tile);
+    const tiles = rawRail.Tiles.map((rawTile) => {
+      const tile = {
+        id: rawTile.Id,
+        title: rawTile.Title,
+        image_id: rawTile.Image.Id,
+      };
+      return { ...tile, ...rail };
     });
-    data.push(rail);
+    return tiles;
   });
-  return data;
+  return tiles.flat();
 };
 
 export default extract;
