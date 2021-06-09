@@ -1,9 +1,3 @@
-const prams = {
-  country: undefined,
-  rail_id: undefined,
-  image_id: undefined,
-};
-
 const railsSchema = (country) => {
   return `https://rails.discovery.indazn.com/ca/v8/rails?country=${country}&groupId=home`;
 };
@@ -22,7 +16,7 @@ const image = (
   return `https://image.discovery.indazn.com/eu/v2/eu/image/?id=${image_id}&quality=${image_quality}&width=${image_width}&height=${image_height}&resizeAction=fill&verticalAlignment=top&format=${image_format}`;
 };
 
-export default { prams, railsSchema, rail, image };
+export default { railsSchema, rail, image };
 
 // https://rails.discovery.indazn.com/ca/v8/rails?country=br&groupId=home
 // https://rail.discovery.indazn.com/eu/v3/Rail?id=Scheduled&country=br&languageCode=en&params=PageType:Home;ContentType:None
