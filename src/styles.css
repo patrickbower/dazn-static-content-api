@@ -1,9 +1,25 @@
-pre {
-  background-color: #f6f6f6;
+.contents {
+  display: grid;
+  grid-template-columns: 400px auto;
+  min-height: 100vh;
+}
+
+.form-wrap {
+  background: #f6f6f6;
   padding: 20px;
-  max-width: 100vw;
-  max-height: 50vh;
+}
+
+.results-wrap {
+  background: darkgray;
+  padding: 20px;
+  display: grid;
+}
+
+pre {
+  padding: 20px;
   overflow-y: scroll;
+  font-size: 12px;
+  color: #333;
 }
 
 button {

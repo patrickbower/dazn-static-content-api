@@ -16,7 +16,11 @@ const image = (
   return `https://image.discovery.indazn.com/eu/v2/eu/image/?id=${image_id}&quality=${image_quality}&width=${image_width}&height=${image_height}&resizeAction=fill&verticalAlignment=top&format=${image_format}`;
 };
 
-export default { railsSchema, rail, image };
+const imageLargest = (image_id, image_format) => {
+  return `https://image.discovery.indazn.com/eu/v2/eu/image/?id=${image_id}&resizeAction=fill&verticalAlignment=top&format=${image_format}`;
+};
+
+export default { railsSchema, rail, image, imageLargest };
 
 // https://rails.discovery.indazn.com/ca/v8/rails?country=br&groupId=home
 // https://rail.discovery.indazn.com/eu/v3/Rail?id=Scheduled&country=br&languageCode=en&params=PageType:Home;ContentType:None

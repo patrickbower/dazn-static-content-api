@@ -52,14 +52,25 @@ const getData = async (prams) => {
 const addImages = (data, prams) => {
   data.forEach((tile) => {
     const { image_id } = tile;
-    const { image_quality, image_width, image_height, image_format } = prams;
-    tile.image_url = Api.image(
+    const {
+      image_quality,
+      image_width,
+      image_height,
+      image_format,
+      image_largest,
+    } = prams;
+
+    tile.image = Api.image(
       image_id,
       image_quality,
       image_width,
       image_height,
       image_format
     );
+
+    if (image_largest) {
+      tile.image_largest = Api.imageLargest(image_id, image_format);
+    }
   });
   return data;
 };
