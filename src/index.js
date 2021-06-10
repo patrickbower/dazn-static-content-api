@@ -60,6 +60,7 @@ const addImages = (data, prams) => {
       image_largest,
     } = prams;
 
+    // standard image
     tile.image = Api.image(
       image_id,
       image_quality,
@@ -68,6 +69,7 @@ const addImages = (data, prams) => {
       image_format
     );
 
+    // optional largest image
     if (image_largest) {
       tile.image_largest = Api.imageLargest(image_id, image_format);
     }
@@ -85,7 +87,8 @@ const processRequest = async (event) => {
   const rawData = await getData(prams);
   const basicData = Extract(rawData);
   const data = addImages(basicData, prams);
-  print(data);
+  output(data);
+  enableDownload();
 };
 
 /**
@@ -100,15 +103,39 @@ const handleForm = (form) => {
 };
 
 /**
- * Setup form submission handling
+ * output - parse and pretty output to UI
+ * @param {array} json
+ */
+const output = (data) => {
+  const json = JSON.stringify(data, null, 2);
+  document.querySelector("#json").innerHTML = json;
+  window.localStorage.setItem("static-homepage-data", json);
+};
+
+const enableDownload = () => {
+  const downLoadButton = document.querySelector("button[type=download]");
+  downLoadButton.removeAttribute("disabled");
+};
+
+const downloadJson = () => {
+  const json = window.localStorage.getItem("static-homepage-data");
+  const name = `tiles.json`;
+  const anchor = document.createElement("a");
+  const type = name.split(".").pop();
+  anchor.href = URL.createObjectURL(
+    new Blob([json], { type: `text/${type === "txt" ? "plain" : type}` })
+  );
+  anchor.download = name;
+  anchor.click();
+};
+
+/**
+ * Initialize event handling
  */
 const form = document.querySelector("#form");
 form.addEventListener("submit", processRequest, false);
 
-/**
- * print - parse and pretty print to UI
- * @param {array} json
- */
-const print = (data) => {
-  document.querySelector("#json").innerHTML = JSON.stringify(data, null, 2);
-};
+const downLoadButton = document.querySelector("button[type=download]");
+downLoadButton.addEventListener("click", downloadJson, false);
+
+window.localStorage.clear();
