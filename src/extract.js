@@ -17,7 +17,7 @@ const extract = (rawData) => {
       const tile = {
         id: rawTile.Id,
         title: rawTile.Title,
-        image_id: rawTile.Image.Id,
+        image: rawTile.Image.Id,
       };
       return { ...tile, ...rail };
     });
