@@ -18,26 +18,20 @@
         </p>
         <form action="#" id="form">
           <h2>Market</h2>
-          <fieldset>
-            <label
-              ><input
-                type="radio"
-                name="country"
-                value="ca"
-                checked="checked"
-              />
-              Canada
-            </label>
-            <label
-              ><input type="radio" name="country" value="de" /> Germany
-            </label>
-            <label
-              ><input type="radio" name="country" value="it" /> Italy
-            </label>
-            <label
-              ><input type="radio" name="country" value="jp" /> Japan
-            </label>
-          </fieldset>
+
+          <select name="country" id="country">
+            <option disabled selected>Please select</option>
+            <option value="at">Austria</option>
+            <option value="de">Germany</option>
+            <option value="ch">Switzerland</option>
+            <option value="it">Italy</option>
+            <option value="es">Spain</option>
+            <option value="jp">Japan</option>
+            <option value="ca">Canada</option>
+            <option value="us">USA</option>
+            <option value="br">Brazil</option>
+          </select>
+
           <br />
           <h3>Image settings</h3>
 
@@ -112,6 +106,13 @@
 
           <br />
           <br />
+
+          <h3>Rails and Tiles</h3>
+          Max number of tiles per rail
+
+          <br />
+          <br />
+
           <button type="submit">Generate</button>
           <button type="download" disabled>Download</button>
         </form>

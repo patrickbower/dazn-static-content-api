@@ -99,6 +99,8 @@ const processRequest = async (event) => {
 const handleForm = (form) => {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
+
+  console.log("data", data);
   return data;
 };
 
@@ -130,12 +132,17 @@ const downloadJson = () => {
 };
 
 /**
+ * Start
  * Initialize event handling
  */
+
+// clean memory
+window.localStorage.clear();
+
+// handle form
 const form = document.querySelector("#form");
 form.addEventListener("submit", processRequest, false);
 
+// handle download
 const downLoadButton = document.querySelector("button[type=download]");
 downLoadButton.addEventListener("click", downloadJson, false);
-
-window.localStorage.clear();
