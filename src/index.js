@@ -1,3 +1,4 @@
+import { forEach } from "underscore";
 import Api from "./api.js";
 import Extract from "./extract.js";
 
@@ -99,9 +100,24 @@ const processRequest = async (event) => {
 const handleForm = (form) => {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
-
-  console.log("data", data);
   return data;
+};
+
+const maxLimitJson = (limit, data) => {
+  // get unique rail titles from all data
+  const railTitles = [...new Set(data.map((obj) => obj.rail_title))];
+  // loop titles
+  const newData = railTitles.map((title) => {
+    // filter data to matching title
+    const titles = data.filter((obj) => {
+      // matching objects from title map
+      return obj.rail_title === title;
+    });
+    // remove any more than limit
+    return titles.slice(0, limit);
+  });
+  // flatten array of arrays
+  return newData.flat();
 };
 
 /**
@@ -109,7 +125,8 @@ const handleForm = (form) => {
  * @param {array} json
  */
 const output = (data) => {
-  const json = JSON.stringify(data, null, 2);
+  const limitedJson = maxLimitJson(10, data);
+  const json = JSON.stringify(limitedJson, null, 2);
   document.querySelector("#json").innerHTML = json;
   window.localStorage.setItem("static-homepage-data", json);
 };
