@@ -1,4 +1,3 @@
-import { forEach } from "underscore";
 import Api from "./api.js";
 import Extract from "./extract.js";
 
@@ -103,6 +102,12 @@ const handleForm = (form) => {
   return data;
 };
 
+/**
+ * maxLimitJson - max number of items per rail title (i.e. max 10 tiles per rail)
+ * @param {integer} limit
+ * @param {array} data
+ * @returns {array}
+ */
 const maxLimitJson = (limit, data) => {
   // get unique rail titles from all data
   const railTitles = [...new Set(data.map((obj) => obj.rail_title))];
