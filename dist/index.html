@@ -16,6 +16,7 @@
           Generates a JSON Schema of basic static content on a Live DAZN
           homepage
         </p>
+        <hr>
         <form action="#" id="form">
           <h2>Region</h2>
 
@@ -47,14 +48,11 @@
 
           <h3>Image settings</h3>
 
-          <!-- format -->
-          <fieldset>
-            <label><input type="radio" name="image_format" value="jpg" checked="checked">
-              JPG
-            </label>
-            <label><input type="radio" name="image_format" value="png"> PNG
-            </label>
-          </fieldset>
+          <!-- hero  -->
+          <label for="image_largest">
+            <input type="checkbox" value="include" id="image_largest" name="image_largest">
+            Include largest possible versions
+          </label>
 
           <br>
 
@@ -80,16 +78,16 @@
           <br>
           <br>
 
-          <!-- hero  -->
-          <label for="image_largest">
-            <input type="checkbox" value="include" id="image_largest" name="image_largest">
-            Include largest possible versions
-          </label>
+          <!-- format -->
+          <fieldset>
+            <label><input type="radio" name="image_format" value="jpg" checked="checked">
+              JPG
+            </label>
+            <label><input type="radio" name="image_format" value="png"> PNG
+            </label>
+          </fieldset>
 
-          <br>
-          <br>
-
-          <h3>Rails and Tiles</h3>
+          <h3>Rails settings</h3>
 
           <!-- Tiles per rail -->
           <label for="tile_count">Tiles in rail</label>
@@ -98,6 +96,8 @@
 
           <br>
           <br>
+
+          <hr>
 
           <button type="submit">Generate</button>
           <button type="download" disabled="">Download</button>
