@@ -87,7 +87,7 @@ const processRequest = async (event) => {
   const rawData = await getData(prams);
   const basicData = Extract(rawData);
   const data = addImages(basicData, prams);
-  output(data);
+  output(data, prams);
   enableDownload();
 };
 
@@ -144,8 +144,9 @@ const maxLimitJson = (limit, data) => {
  * output - parse and pretty output to UI
  * @param {array} json
  */
-const output = (data) => {
-  const limitedJson = maxLimitJson(10, data);
+const output = (data, prams) => {
+  const tileCount = parseInt(prams.tile_count);
+  const limitedJson = maxLimitJson(tileCount, data);
   const json = JSON.stringify(limitedJson, null, 2);
   document.querySelector("#json").innerHTML = json;
   window.localStorage.setItem("static-homepage-data", json);

@@ -78,7 +78,11 @@
           <br>
 
           <h3>Rails and Tiles</h3>
-          Max number of tiles per rail
+
+          <!-- Tiles per rail -->
+          <label for="tile_count">Tiles in rail</label>
+          <input type="range" value="10" min="3" max="10" oninput="this.nextElementSibling.value = this.value" id="tile_count" name="tile_count">
+          <output>10</output>/10
 
           <br>
           <br>
