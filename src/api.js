@@ -2,8 +2,8 @@ const railsSchema = (country) => {
   return `https://rails.discovery.indazn.com/ca/v8/rails?country=${country}&groupId=home`;
 };
 
-const rail = (rail_id, country) => {
-  return `https://rail.discovery.indazn.com/eu/v3/Rail?id=${rail_id}&country=${country}&languageCode=en&params=PageType:Home;ContentType:None`;
+const rail = (rail_id, country, language) => {
+  return `https://rail.discovery.indazn.com/eu/v3/Rail?id=${rail_id}&country=${country}&languageCode=${language}&params=PageType:Home;ContentType:None`;
 };
 
 const image = (

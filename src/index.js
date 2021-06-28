@@ -21,8 +21,8 @@ const handleRequest = async (url) => {
 const handleRailsData = async (railsSchema, prams) => {
   const getRailData = railsSchema.map(async (rail) => {
     const { Id } = rail;
-    const { country } = prams;
-    const railsUrl = Api.rail(Id, country);
+    const { country, language } = prams;
+    const railsUrl = Api.rail(Id, country, language);
     const railData = await handleRequest(railsUrl).then((data) => data);
     return railData;
   });
@@ -103,12 +103,12 @@ const handleForm = (form) => {
 };
 
 /**
- * maxLimitJson - max number of items per rail title (i.e. max 10 tiles per rail)
+ * filterData - max number of items per rail title (i.e. max 10 tiles per rail)
  * @param {integer} limit
  * @param {array} data
  * @returns {array}
  */
-const maxLimitJson = (limit, data) => {
+const filterData = (limit, data) => {
   // get unique rail titles from all data
   const railTitles = [...new Set(data.map((obj) => obj.rail_title))];
   // loop titles
@@ -146,8 +146,8 @@ const maxLimitJson = (limit, data) => {
  */
 const output = (data, prams) => {
   const tileCount = parseInt(prams.tile_count);
-  const limitedJson = maxLimitJson(tileCount, data);
-  const json = JSON.stringify(limitedJson, null, 2);
+  const filteredData = filterData(tileCount, data);
+  const json = JSON.stringify(filteredData, null, 2);
   document.querySelector("#json").innerHTML = json;
   window.localStorage.setItem("static-homepage-data", json);
 };
