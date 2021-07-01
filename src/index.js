@@ -150,6 +150,7 @@ const output = (data, prams) => {
   const json = JSON.stringify(filteredData, null, 2);
   document.querySelector("#json").innerHTML = json;
   window.localStorage.setItem("static-homepage-data", json);
+  window.localStorage.setItem("static-homepage-prams", JSON.stringify(prams));
 };
 
 const enableDownload = () => {
@@ -159,7 +160,11 @@ const enableDownload = () => {
 
 const downloadJson = () => {
   const json = window.localStorage.getItem("static-homepage-data");
-  const name = `tiles.json`;
+  const prams = JSON.parse(
+    window.localStorage.getItem("static-homepage-prams")
+  );
+  const date = new Date().toISOString().slice(0, 10);
+  const name = `${date}-${prams.country}-in-${prams.language}.json`;
   const anchor = document.createElement("a");
   const type = name.split(".").pop();
   anchor.href = URL.createObjectURL(
