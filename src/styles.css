@@ -137,3 +137,25 @@ p {
 .overflow {
   overflow: hidden;
 }
+
+.platform-img {
+  width: 75px;
+  border-radius: 10px;
+}
+
+.platform input {
+  display: none;
+}
+
+.platform label {
+  margin-right: 15px;
+}
+
+.platform input + div {
+  text-align: center;
+}
+
+.platform input:not(:checked) + div {
+  /* display: inline-block; */
+  opacity: 0.25;
+}
