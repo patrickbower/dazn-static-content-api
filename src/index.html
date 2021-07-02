@@ -6,19 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dazn Content Api</title>
     <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="contents">
       <div class="form-wrap">
-        <h1>Dazn Content Api</h1>
+        <img src="dazn-logo.png" alt="dazn logo" class="logo" />
+        <h1>Static Content</h1>
         <p>
           Generates a JSON Schema of basic static content on a Live DAZN
           homepage
         </p>
-        <hr />
         <form action="#" id="form">
-          <h2>Region</h2>
+          <h3>1. Market and Language</h3>
 
           <select name="country" id="country" required>
             <option value="">Market</option>
@@ -45,115 +46,115 @@
           </select>
 
           <br />
-
-          <h3>Image settings</h3>
-
-          <!-- hero  -->
-          <label for="image_largest">
-            <input
-              type="checkbox"
-              value="include"
-              id="image_largest"
-              name="image_largest"
-            />
-            Include largest possible versions
-            <abbr
-              title="An additional image will be added that is uncompressed with unrestricted dimensions"
-              >&#9432;</abbr
-            >
-          </label>
-
           <br />
+          <h3>2. Image Settings</h3>
 
           <!-- height -->
-          <label for="image_height"
-            >Height
-            <abbr
-              title="Disproportionate sizing may result in black letterboxing strips appearing on the image"
-              >&#9432;</abbr
-            ></label
-          >
-          <input
-            type="number"
-            value="374"
-            id="image_height"
-            name="image_height"
-          />
-          px
+          <div class="grid-pair">
+            <div>
+              <label for="image_height"
+                >Height
+                <abbr
+                  title="Disproportionate sizing may result in black letterboxing strips appearing on the image"
+                  >&#x26A0;</abbr
+                ></label
+              >
+              <input
+                type="number"
+                value="374"
+                id="image_height"
+                name="image_height"
+              />
+            </div>
+            <strong class="grid-pair-text">x</strong>
+            <div>
+              <!-- width -->
+              <label for="image_width"
+                >Width
+                <abbr
+                  title="Disproportionate sizing may result in black letterboxing strips appearing on the image"
+                  >&#x26A0;</abbr
+                ></label
+              >
+              <input
+                type="number"
+                value="668"
+                id="image_width"
+                name="image_width"
+              />
+            </div>
+            <strong class="grid-pair-text">px</strong>
+          </div>
 
-          <br />
-
-          <!-- width -->
-          <br />
-          <label for="image_width"
-            >Width
-            <abbr
-              title="Disproportionate sizing may result in black letterboxing strips appearing on the image"
-              >&#9432;</abbr
-            ></label
-          >
-          <input
-            type="number"
-            value="668"
-            id="image_width"
-            name="image_width"
-          />
-          px
-
-          <br />
-          <br />
-
-          <!-- Quality -->
-          <label for="image_quality">Image Quality</label>
-          <input
-            type="range"
-            value="80"
-            min="1"
-            max="100"
-            oninput="this.nextElementSibling.value = this.value"
-            id="image_quality"
-            name="image_quality"
-          />
-          <output>80</output>/100
-
-          <br />
-          <br />
+          <!-- large image  -->
+          <div class="pb-3">
+            <label for="image_largest">
+              <input
+                type="checkbox"
+                value="include"
+                id="image_largest"
+                name="image_largest"
+              />
+              Include largest versions
+              <abbr
+                title="An additional image will be added that is uncompressed with unrestricted dimensions"
+                >&#x26A0;</abbr
+              >
+            </label>
+          </div>
 
           <!-- format -->
-          <fieldset>
-            <label
-              ><input
-                type="radio"
-                name="image_format"
-                value="jpg"
-                checked="checked"
-              />
-              JPG
-            </label>
-            <label
-              ><input type="radio" name="image_format" value="png" /> PNG
-            </label>
-          </fieldset>
+          <div class="pb-3 radio-group">
+            <fieldset>
+              <label
+                ><input
+                  type="radio"
+                  name="image_format"
+                  value="jpg"
+                  checked="checked"
+                />
+                JPG
+              </label>
+              <label
+                ><input type="radio" name="image_format" value="png" />
+                PNG
+              </label>
+            </fieldset>
+          </div>
 
-          <h3>Rails settings</h3>
+          <!-- Quality -->
+          <div class="pb-3 slider">
+            <label for="image_quality">Image Quality</label>
+            <input
+              type="range"
+              value="80"
+              min="1"
+              max="100"
+              oninput="this.nextElementSibling.value = this.value"
+              id="image_quality"
+              name="image_quality"
+            />
+            <output>80</output>/100
+          </div>
+
+          <h3>3. Number of Tiles in Each Rail</h3>
 
           <!-- Tiles per rail -->
-          <label for="tile_count">Tiles in rail</label>
-          <input
-            type="range"
-            value="10"
-            min="3"
-            max="10"
-            oninput="this.nextElementSibling.value = this.value"
-            id="tile_count"
-            name="tile_count"
-          />
-          <output>10</output>/10
+          <div class="pb-3 slider">
+            <label for="tile_count">Tiles in rail</label>
+            <input
+              type="range"
+              value="10"
+              min="3"
+              max="10"
+              oninput="this.nextElementSibling.value = this.value"
+              id="tile_count"
+              name="tile_count"
+            />
+            <output>10</output>/10
+          </div>
 
-          <br />
-          <br />
-
-          <hr />
+          <h3>4. Generate then Download</h3>
 
           <button type="submit">Generate</button>
           <button type="download" disabled>Download</button>
