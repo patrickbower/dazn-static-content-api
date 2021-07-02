@@ -79,6 +79,10 @@ input[type="range"] {
   text-align: left;
 }
 
+.slider--tiles input {
+  padding-left: 30px;
+}
+
 .pb-1 {
   margin-bottom: 0.25rem;
 }
