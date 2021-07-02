@@ -108,36 +108,47 @@ const handleForm = (form) => {
  * @param {array} data
  * @returns {array}
  */
-const filterData = (limit, data) => {
+const filterData = (limit, data, platform) => {
   // get unique rail titles from all data
   const railTitles = [...new Set(data.map((obj) => obj.rail_title))];
   // loop titles
-  const newData = railTitles.map((title) => {
-    // filter data to matching title
-    const titles = data.filter((obj) => {
-      // matching objects from title map
-      return obj.rail_title === title;
-    });
-    // remove any more than limit
-    if (titles.length < limit) {
-      const missingCount = limit - titles.length;
-      const blankObj = {
-        id: "none",
-        title: "none",
-        label: "none",
-        image_id: "none",
-        rail_id: "none",
-        rail_title: "none",
-        image: "none",
-      };
-      const blankArray = new Array(missingCount).fill().map(() => blankObj);
-      return titles.concat(blankArray);
-    } else {
-      return titles.slice(0, limit);
+  const newData = railTitles
+    .map((title) => {
+      // filter data to matching title
+      const titles = data.filter((obj) => {
+        // matching objects from title map
+        return obj.rail_title === title;
+      });
+      // remove any more than limit
+      if (titles.length < limit) {
+        const missingCount = limit - titles.length;
+        const blankObj = {
+          id: "none",
+          title: "none",
+          label: "none",
+          image_id: "none",
+          rail_id: "none",
+          rail_title: "none",
+          image: "none",
+        };
+        const blankArray = new Array(missingCount).fill().map(() => blankObj);
+        return titles.concat(blankArray);
+      } else {
+        return titles.slice(0, limit);
+      }
+    })
+    .flat();
+
+  if (platform === "figma") {
+    for (var key in newData) {
+      console.log(newData[key]);
+      delete newData[key].id;
+      delete newData[key].rail_id;
+      delete newData[key].image_id;
     }
-  });
-  // flatten array of arrays
-  return newData.flat();
+  }
+
+  return newData;
 };
 
 /**
@@ -146,8 +157,8 @@ const filterData = (limit, data) => {
  */
 const output = (data, prams) => {
   const tileCount = parseInt(prams.tile_count);
-  const filteredData = filterData(tileCount, data);
-  const json = JSON.stringify(filteredData, null, 2);
+  data = filterData(tileCount, data, prams.platform);
+  const json = JSON.stringify(data, null, 2);
   document.querySelector("#json").innerHTML = json;
   window.localStorage.setItem("static-homepage-data", json);
   window.localStorage.setItem("static-homepage-prams", JSON.stringify(prams));
