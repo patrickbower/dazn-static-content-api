@@ -120,7 +120,7 @@ const filterData = (limit, data, platform) => {
         return obj.rail_title === title;
       });
       // remove any more than limit
-      if (titles.length < limit) {
+      if (platform === "figma" && titles.length < limit) {
         const missingCount = limit - titles.length;
         const blankObj = {
           id: "none",
@@ -141,7 +141,6 @@ const filterData = (limit, data, platform) => {
 
   if (platform === "figma") {
     for (var key in newData) {
-      console.log(newData[key]);
       delete newData[key].id;
       delete newData[key].rail_id;
       delete newData[key].image_id;
