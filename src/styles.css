@@ -14,7 +14,7 @@
 }
 
 .results-wrap {
-  background: darkgray;
+  background: #333;
   padding: 20px;
   display: grid;
 }
@@ -22,11 +22,14 @@
 pre {
   padding: 20px;
   font-size: 12px;
-  color: #333;
+  color: white;
 }
 
 button {
   font-size: large;
+  color: white;
+  background-color: #333;
+  border: none;
 }
 
 fieldset {
@@ -36,6 +39,7 @@ fieldset {
 
 label {
   display: block;
+  color: #333;
 }
 
 input:invalid {
@@ -111,14 +115,15 @@ input[type="range"] {
 }
 
 abbr[title] {
-  color: darkgray;
+  color: #333;
   text-decoration: none;
   border-bottom: none;
 }
 
+h1,
 h2,
 h3 {
-  color: darkgray;
+  color: #333;
   margin-top: 0;
 }
 
@@ -131,7 +136,7 @@ h3 {
 p {
   margin: -0.5rem 0 2rem;
   font-weight: bold;
-  color: darkgray;
+  color: #333;
 }
 
 .overflow {
