@@ -4,22 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dazn Content Api</title>
-    <link rel="stylesheet" href="./normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
-    <link rel="stylesheet" href="./styles.css" />
+    <title>Animated Buttons</title>
+    <link rel="stylesheet" href="./assets/tailwind/tailwind.css" />
   </head>
-  <body>
+
+  <body class="min-h-screen">
     <div class="contents">
       <div class="form-wrap">
-        <img src="dazn-logo.png" alt="dazn logo" class="logo" />
+        <img
+          src="./assets/images/dazn-logo.png"
+          alt="dazn logo"
+          class="logo w-24"
+        />
         <div class="overflow">
           <h1>Static Content</h1>
           <p>Generate static content data from any live homepage</p>
         </div>
         <form action="#" id="form">
           <h3>1. Choose Platform</h3>
-
           <div class="pb-3 radio-group platform">
             <fieldset>
               <label
@@ -30,14 +32,22 @@
                   checked="checked"
                 />
                 <div>
-                  <img class="platform-img" src="figma.png" alt="figma" />
+                  <img
+                    class="platform-img"
+                    src="./assets/images/figma.png"
+                    alt="figma"
+                  />
                   Figma
                 </div>
               </label>
               <label
                 ><input type="radio" name="platform" value="vscode" />
                 <div>
-                  <img class="platform-img" src="vscode.png" alt="vs code" />
+                  <img
+                    class="platform-img"
+                    src="./assets/images/vscode.png"
+                    alt="vs code"
+                  />
                   VS Code
                 </div>
               </label>
@@ -75,7 +85,13 @@
 
           <br />
           <br />
-          <h3>2. Image Settings</h3>
+          <h3>2. Resource Strings</h3>
+          <small>Product strings</small>
+
+          <br />
+          <br />
+          <h3 class="m-0">3. Rails</h3>
+          <small>Tile images and strings</small>
 
           <!-- height -->
           <div class="grid-pair">
@@ -193,7 +209,7 @@
       </div>
     </div>
   </body>
-  <script src="./index.js" type="module"></script>
-  <script src="./api.js" type="module"></script>
-  <script src="./extract.js" type="module"></script>
+  <script src="./assets/scripts/index.js" type="module"></script>
+  <script src="./assets/scripts/api.js" type="module"></script>
+  <script src="./assets/scripts/extract.js" type="module"></script>
 </html>
