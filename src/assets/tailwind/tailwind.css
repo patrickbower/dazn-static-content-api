@@ -1,3 +1,42 @@
+:root {
+  --colour-tarmac: #0c161c;
+  --colour-ebony: #242d33;
+  --colour-mako: #3d4549;
+  --colour-asphalt: #6d7377;
+  --colour-concrete: #9ea2a4;
+  --colour-iron: #ced0d2;
+  --colour-chalk: #f9fafa;
+  --colour-neon: #f7ff1a;
+  --colour-field: #14854d;
+  --colour-gloves: #d12424;
+  --colour-danger: #fd7777;
+  --screen-sm: 375px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1440px;
+  --screen-2xl: 1920px;
+  --grid-template-columns-15: "repeat(15, minmax(0, 1fr))";
+  --font-family-display: "Oscine";
+  --font-family-body: "Trim";
+  --font-family-oscine: "Oscine";
+  --font-family-trim: "Trim";
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-22: 1.375rem;
+  --font-size-24: 1.5rem;
+  --font-size-28: 1.75rem;
+  --font-size-32: 2rem;
+  --font-size-36: 2.25rem;
+  --font-size-42: 2.625rem;
+  --stroke-width-3: 3;
+  --stroke-width-4: 4;
+  --stroke-width-5: 5;
+  --stroke-width-6: 6;
+  --stroke-width-7: 7;
+  --stroke-width-8: 8;
+}
+
 /* tailwind css */
 
 /* ! tailwindcss v3.0.7 | MIT License | https://tailwindcss.com */
@@ -423,43 +462,13 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: none;
 }
 
-:root {
-  --colour-tarmac: #0c161c;
-  --colour-ebony: #242d33;
-  --colour-mako: #3d4549;
-  --colour-asphalt: #6d7377;
-  --colour-concrete: #9ea2a4;
-  --colour-iron: #ced0d2;
-  --colour-chalk: #f9fafa;
-  --colour-neon: #f7ff1a;
-  --colour-field: #14854d;
-  --colour-gloves: #d12424;
-  --colour-danger: #fd7777;
-  --screen-sm: 375px;
-  --screen-md: 768px;
-  --screen-lg: 1024px;
-  --screen-xl: 1440px;
-  --screen-2xl: 1920px;
-  --grid-template-columns-15: "repeat(15, minmax(0, 1fr))";
-  --font-family-display: "Oscine";
-  --font-family-body: "Trim";
-  --font-family-oscine: "Oscine";
-  --font-family-trim: "Trim";
-  --font-size-12: 0.75rem;
-  --font-size-14: 0.875rem;
-  --font-size-16: 1rem;
-  --font-size-22: 1.375rem;
-  --font-size-24: 1.5rem;
-  --font-size-28: 1.75rem;
-  --font-size-32: 2rem;
-  --font-size-36: 2.25rem;
-  --font-size-42: 2.625rem;
-  --stroke-width-3: 3;
-  --stroke-width-4: 4;
-  --stroke-width-5: 5;
-  --stroke-width-6: 6;
-  --stroke-width-7: 7;
-  --stroke-width-8: 8;
+*, ::before, ::after {
+  --tw-border-opacity: 1;
+  border-color: rgb(229 231 235 / var(--tw-border-opacity));
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
 }
 
 @font-face {
@@ -470,7 +479,7 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 400;
 
   src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_400.woff2")
-      format("woff2");
+    format("woff2");
 }
 
 @font-face {
@@ -481,9 +490,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 600;
 
   src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_600.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_600.woff")
-        format("woff");
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_600.woff")
+      format("woff");
 }
 
 @font-face {
@@ -494,9 +503,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 800;
 
   src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_800.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_800.woff")
-        format("woff");
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_800.woff")
+      format("woff");
 }
 
 @font-face {
@@ -507,9 +516,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 600;
 
   src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_italic_600.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_italic_600.woff")
-        format("woff");
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_italic_600.woff")
+      format("woff");
 }
 
 @font-face {
@@ -520,9 +529,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 400;
 
   src: url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_400.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_400.woff")
-        format("woff");
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_400.woff")
+      format("woff");
 }
 
 @font-face {
@@ -533,9 +542,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-weight: 700;
 
   src: url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_700.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_700.woff")
-        format("woff");
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_700.woff")
+      format("woff");
 }
 
 body {
@@ -550,35 +559,377 @@ body {
 }
 
 input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* toggle switch */
-
-/* segmented radio */
-
-.static {
-  position: static;
+._platform {
+  input:checked + div {
+    background-color: var(--colour-mako);
+  }
+  input:not(:checked) + div {
+    color: var(--colour-concrete);
+  }
 }
 
-.m-0 {
-  margin: 0px;
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  top: -2.5rem;
+  right: -1rem;
+  white-space: nowrap;
+  border-radius: 0.375rem;
+  background-color: var(--colour-chalk);
+  padding: 0.5rem;
+  font-size: var(--font-size-14);
+  color: var(--colour-tarmac);
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.contents {
-  display: contents;
+.has-tooltip:hover .tooltip {
+  visibility: visible;
+  z-index: 50;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+._checkbox + div {
+  margin-right: 0.5rem;
+  margin-top: 0.125rem;
+  display: flex;
+  height: 1rem;
+  width: 1rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-width: 2px;
+  border-color: var(--colour-chalk);
 }
 
-.w-24 {
-  width: 6rem;
+._checkbox + div:focus-within {
+  background-color: var(--colour-chalk);
 }
 
-.pb-3 {
+._checkbox:checked + div {
+  background-color: var(--colour-chalk);
+}
+
+._checkbox:checked + div svg {
+  display: block;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  cursor: ew-resize;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+button:disabled {
+  opacity: 0.5;
+  background: var(--colour-asphalt);
+  /* color: var(--colour-iron); */
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.block {
+  display: block;
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.hidden {
+  display: none;
+}
+
+.h-14 {
+  height: 3.5rem;
+}
+
+.h-4 {
+  height: 1rem;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.w-14 {
+  width: 3.5rem;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-7 {
+  width: 1.75rem;
+}
+
+.w-10 {
+  width: 2.5rem;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.content-center {
+  align-content: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-baseline {
+  align-items: baseline;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-items-center {
+  justify-items: center;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.self-end {
+  align-self: flex-end;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.bg-ebony {
+  background-color: var(--colour-ebony);
+}
+
+.bg-tarmac {
+  background-color: var(--colour-tarmac);
+}
+
+.bg-mako {
+  background-color: var(--colour-mako);
+}
+
+.bg-neon {
+  background-color: var(--colour-neon);
+}
+
+.fill-current {
+  fill: currentColor;
+}
+
+.p-6 {
+  padding: 1.5rem;
+}
+
+.p-1 {
+  padding: 0.25rem;
+}
+
+.p-2 {
+  padding: 0.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.py-3 {
+  padding-top: 0.75rem;
   padding-bottom: 0.75rem;
+}
+
+.pt-8 {
+  padding-top: 2rem;
+}
+
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pb-8 {
+  padding-bottom: 2rem;
+}
+
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+
+.pb-1 {
+  padding-bottom: 0.25rem;
+}
+
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.align-middle {
+  vertical-align: middle;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-14 {
+  font-size: var(--font-size-14);
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.leading-none {
+  line-height: 1;
+}
+
+.text-chalk {
+  color: var(--colour-chalk);
+}
+
+.text-asphalt {
+  color: var(--colour-asphalt);
+}
+
+.text-tarmac {
+  color: var(--colour-tarmac);
+}
+
+.opacity-0 {
+  opacity: 0;
 }

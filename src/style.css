@@ -1,238 +1,183 @@
+:root {
+  --colour-tarmac: #0c161c;
+  --colour-ebony: #242d33;
+  --colour-mako: #3d4549;
+  --colour-asphalt: #6d7377;
+  --colour-concrete: #9ea2a4;
+  --colour-iron: #ced0d2;
+  --colour-chalk: #f9fafa;
+  --colour-neon: #f7ff1a;
+  --colour-field: #14854d;
+  --colour-gloves: #d12424;
+  --colour-danger: #fd7777;
+  --screen-sm: 375px;
+  --screen-md: 768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1440px;
+  --screen-2xl: 1920px;
+  --grid-template-columns-15: "repeat(15, minmax(0, 1fr))";
+  --font-family-display: "Oscine";
+  --font-family-body: "Trim";
+  --font-family-oscine: "Oscine";
+  --font-family-trim: "Trim";
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-22: 1.375rem;
+  --font-size-24: 1.5rem;
+  --font-size-28: 1.75rem;
+  --font-size-32: 2rem;
+  --font-size-36: 2.25rem;
+  --font-size-42: 2.625rem;
+  --stroke-width-3: 3;
+  --stroke-width-4: 4;
+  --stroke-width-5: 5;
+  --stroke-width-6: 6;
+  --stroke-width-7: 7;
+  --stroke-width-8: 8;
+}
+
 /* tailwind css */
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
 
-@layer base {
-  :root {
-    --colour-tarmac: #0c161c;
-    --colour-ebony: #242d33;
-    --colour-mako: #3d4549;
-    --colour-asphalt: #6d7377;
-    --colour-concrete: #9ea2a4;
-    --colour-iron: #ced0d2;
-    --colour-chalk: #f9fafa;
-    --colour-neon: #f7ff1a;
-    --colour-field: #14854d;
-    --colour-gloves: #d12424;
-    --colour-danger: #fd7777;
-    --screen-sm: 375px;
-    --screen-md: 768px;
-    --screen-lg: 1024px;
-    --screen-xl: 1440px;
-    --screen-2xl: 1920px;
-    --grid-template-columns-15: "repeat(15, minmax(0, 1fr))";
-    --font-family-display: "Oscine";
-    --font-family-body: "Trim";
-    --font-family-oscine: "Oscine";
-    --font-family-trim: "Trim";
-    --font-size-12: 0.75rem;
-    --font-size-14: 0.875rem;
-    --font-size-16: 1rem;
-    --font-size-22: 1.375rem;
-    --font-size-24: 1.5rem;
-    --font-size-28: 1.75rem;
-    --font-size-32: 2rem;
-    --font-size-36: 2.25rem;
-    --font-size-42: 2.625rem;
-    --stroke-width-3: 3;
-    --stroke-width-4: 4;
-    --stroke-width-5: 5;
-    --stroke-width-6: 6;
-    --stroke-width-7: 7;
-    --stroke-width-8: 8;
-  }
+@font-face {
+  font-family: "Trim";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_400.woff2")
+    format("woff2");
+}
 
-  @font-face {
-    font-family: "Trim";
-    font-style: normal;
-    font-weight: 400;
-    src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_400.woff2")
-      format("woff2");
-  }
+@font-face {
+  font-family: "Trim";
+  font-style: normal;
+  font-weight: 600;
+  src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_600.woff2")
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_600.woff")
+      format("woff");
+}
 
-  @font-face {
-    font-family: "Trim";
-    font-style: normal;
-    font-weight: 600;
-    src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_600.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_600.woff")
-        format("woff");
-  }
+@font-face {
+  font-family: "Trim";
+  font-style: normal;
+  font-weight: 800;
+  src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_800.woff2")
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_800.woff")
+      format("woff");
+}
 
-  @font-face {
-    font-family: "Trim";
-    font-style: normal;
-    font-weight: 800;
-    src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_800.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_normal_800.woff")
-        format("woff");
-  }
+@font-face {
+  font-family: "Trim";
+  font-style: italic;
+  font-weight: 600;
+  src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_italic_600.woff2")
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_italic_600.woff")
+      format("woff");
+}
+@font-face {
+  font-family: "Oscine";
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_400.woff2")
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_400.woff")
+      format("woff");
+}
+@font-face {
+  font-family: "Oscine";
+  font-style: normal;
+  font-weight: 700;
+  src: url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_700.woff2")
+      format("woff2"),
+    url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_700.woff")
+      format("woff");
+}
 
-  @font-face {
-    font-family: "Trim";
-    font-style: italic;
-    font-weight: 600;
-    src: url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_italic_600.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/DAZNTrim_v2.9_italic_600.woff")
-        format("woff");
-  }
-  @font-face {
-    font-family: "Oscine";
-    font-style: normal;
-    font-weight: 400;
-    src: url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_400.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_400.woff")
-        format("woff");
-  }
-  @font-face {
-    font-family: "Oscine";
-    font-style: normal;
-    font-weight: 700;
-    src: url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_700.woff2")
-        format("woff2"),
-      url("https://static.dazndn.com/fonts/Oscine_v2.001_normal_700.woff")
-        format("woff");
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Trim";
+  font-weight: 400;
+  background-color: var(--colour-tarmac);
+  color: var(--colour-chalk);
+  font-size: 16px;
+  margin: 0;
+}
+
+@tailwind components;
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+._platform {
+  input:checked + div {
+    background-color: var(--colour-mako);
   }
 
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: "Trim";
-    font-weight: 400;
-    background-color: var(--colour-tarmac);
-    color: var(--colour-chalk);
-    font-size: 16px;
-    margin: 0;
-  }
-
-  input[type="number"]::-webkit-inner-spin-button,
-  input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  input:not(:checked) + div {
+    color: var(--colour-concrete);
   }
 }
 
-@layer components {
-  .Header__toggle:hover,
-  .Header__segmented-control *:hover {
-    cursor: pointer;
-  }
-
-  .Header__item-active:after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    left: 0;
-    bottom: -15px;
-    width: 100%;
-    height: 2px;
-    background-color: var(--colour-neon);
-  }
-
-  /* toggle switch */
-  .Header__toggle input[type="checkbox"] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-  }
-
-  .Header__toggle label {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 50px;
-    height: 25px;
-    background: var(--colour-concrete);
-    display: block;
-    border-radius: 25px;
-    position: relative;
-  }
-
-  .Header__toggle label:after {
-    content: "";
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 21px;
-    height: 21px;
-    background: var(--colour-tarmac);
-    border-radius: 22px;
-    transition: 0.3s;
-  }
-
-  .Header__toggle input:checked + label {
-    background: var(--colour-chalk);
-  }
-
-  .Header__toggle input:checked + label:after {
-    left: calc(100% - 2px);
-    transform: translateX(-100%);
-  }
-
-  .Header__toggle label:active:after {
-    width: 32px;
-  }
-
-  /* segmented radio */
-  .Header__segmented-control input {
-    position: absolute;
-    left: -999999px;
-  }
-
-  .Header__segmented-control input:checked + label {
-    color: var(--colour-chalk);
-    background-color: var(--colour-concrete);
-    font-weight: 800;
-  }
-
-  .text-align-last {
-    text-align-last: center;
-  }
-
-  .select-arrow-pseudo {
-    position: relative;
-  }
-
-  .select-arrow-pseudo:after {
-    content: "";
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    background-image: url("./images/arrow.svg");
-    background-repeat: no-repeat;
-    pointer-events: none;
-  }
-
-  .tooltip-head ~ .tooltip-body {
-    display: none;
-  }
-
-  .tooltip-body--right {
-    right: 0;
-  }
-
-  .tooltip-head:hover {
-    color: var(--colour-chalk);
-  }
-
-  .tooltip-head:hover ~ .tooltip-body {
-    display: block;
-  }
-
-  .dynamicLabel:focus-within ~ label,
-  .dynamicLabel:not(:placeholder-shown) ~ label {
-    @apply transform scale-75 -translate-y-6 text-chalk;
-  }
-
-  .dynamicLabel:focus-within ~ label.dark,
-  .dynamicLabel:not(:placeholder-shown) ~ label.dark {
-    @apply transform scale-75 -translate-y-6 text-chalk;
-  }
+.tooltip {
+  @apply invisible 
+    absolute 
+    shadow-lg
+    rounded-md
+    p-2
+    bg-chalk
+    text-tarmac
+    -top-10
+    -right-4
+    text-14
+    whitespace-nowrap;
 }
+
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
+}
+
+._checkbox + div {
+  @apply border-2 
+    border-chalk
+    w-4
+    h-4
+    flex flex-shrink-0
+    justify-center
+    items-center
+    mr-2
+    mt-0.5
+    focus-within:bg-chalk;
+}
+
+._checkbox:checked + div {
+  @apply bg-chalk;
+}
+._checkbox:checked + div svg {
+  @apply block;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  cursor: ew-resize;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+button:disabled {
+  opacity: 0.5;
+  background: var(--colour-asphalt);
+  /* color: var(--colour-iron); */
+}
+
+@tailwind utilities;

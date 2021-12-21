@@ -4,172 +4,255 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Animated Buttons</title>
+    <title>DAZN Content Tool</title>
     <link rel="stylesheet" href="./assets/tailwind/tailwind.css" />
   </head>
 
-  <body class="min-h-screen">
-    <div class="contents">
-      <div class="form-wrap">
-        <img
-          src="./assets/images/dazn-logo.png"
-          alt="dazn logo"
-          class="logo w-24"
-        />
-        <div class="overflow">
-          <h1>Static Content</h1>
-          <p>Generate static content data from any live homepage</p>
+  <body>
+    <div class="grid grid-flow-col">
+      <div class="bg-ebony p-6" style="width: 440px">
+        <div class="flex">
+          <svg class="fill-current text-chalk w-14" viewBox="0 0 240 240">
+            <path
+              d="M147.74 82.91l7.716-25.964 7.906 25.964H147.74zm38.48 22.68l-20.253-61.28c-.451-1.351-.965-2.239-1.541-2.655-.581-.416-1.515-.628-2.798-.628H150.44c-1.287 0-2.232.228-2.845.675-.611.448-1.11 1.32-1.495 2.608l-20.444 61.28c-.259.323-.384.959-.384 1.925 0 1.484.899 2.222 2.7 2.222h8.389c.773 0 1.397-.032 1.879-.094.483-.063.868-.228 1.159-.487.29-.252.544-.644.772-1.155.224-.518.464-1.193.722-2.026l3.183-10.712h23.05l3.276 10.516c.259.903.514 1.61.773 2.128.255.51.546.91.867 1.202.322.29.706.47 1.158.534.447.062 1.028.094 1.734.094h8.97c1.798 0 2.7-.738 2.7-2.222 0-.448-.015-.755-.047-.911-.036-.165-.145-.503-.337-1.014zm-9.944 24.672h-6.463c-1.672 0-2.783.243-3.327.723-.546.486-.817 1.468-.817 2.945v36.377l-19.094-36.472c-.773-1.546-1.53-2.529-2.268-2.944-.741-.417-2.04-.629-3.905-.629h-5.98c-1.671 0-2.782.243-3.327.723-.546.486-.82 1.468-.82 2.945v61.374c0 1.485.255 2.459.772 2.946.514.478 1.606.722 3.277.722h6.561c1.668 0 2.778-.244 3.324-.722.545-.487.82-1.46.82-2.946v-36.48l19.094 36.574c.773 1.548 1.526 2.53 2.268 2.946.738.423 2.04.628 3.904.628h5.98c1.672 0 2.779-.244 3.328-.722.545-.487.82-1.46.82-2.946V133.93c0-1.477-.275-2.459-.82-2.945-.55-.48-1.656-.723-3.327-.723zm32.03-5.811l16.65 16.65v83.855H15.045v-83.869l16.634-16.634a6.297 6.297 0 0 0 0-8.906L15.044 98.913v-83.87h209.913v83.851l-16.65 16.651a6.297 6.297 0 0 0 0 8.906zM240 0H0v106.133L13.867 120 0 133.867V240h240V133.867L226.134 120 240 106.133V0zM106.703 184.687h-27.11l28.548-40.14c.449-.644.74-1.161.87-1.547.13-.384.193-.832.193-1.35v-7.72c0-1.477-.276-2.459-.823-2.945-.547-.48-1.662-.723-3.339-.723H63.823c-1.485 0-2.45.275-2.902.817-.452.55-.677 1.688-.677 3.432v5.788c0 1.735.225 2.882.677 3.424.452.55 1.417.824 2.902.824h25.445l-28.157 40.14c-.713.903-1.068 1.806-1.068 2.701v7.916c0 1.485.276 2.459.823 2.946.548.478 1.662.722 3.34.722h42.497c1.484 0 2.453-.275 2.906-.817.449-.55.677-1.689.677-3.432v-5.787c0-1.737-.228-2.875-.677-3.424-.453-.55-1.422-.825-2.906-.825zM94.084 82.328c0 2.64-.176 4.846-.53 6.613-.353 1.767-.93 3.204-1.734 4.296-.804 1.091-1.864 1.861-3.183 2.317-1.318.447-2.942.675-4.87.675h-7.906V54.535h7.907c3.665 0 6.298 1.084 7.907 3.235 1.605 2.153 2.41 5.71 2.41 10.665v13.893zm13.793-27.888c-2.252-4.57-5.32-7.947-9.21-10.13-3.892-2.191-8.793-3.283-14.707-3.283H64.19c-1.672 0-2.782.243-3.328.723-.545.486-.82 1.468-.82 2.945v61.374c0 1.485.275 2.458.82 2.946.546.478 1.656.722 3.328.722h22.178c10.481 0 17.65-4.469 21.508-13.414.898-2.057 1.526-4.13 1.88-6.228.353-2.089.529-4.743.529-7.955V69.111c0-3.668-.176-6.565-.53-8.686a22.045 22.045 0 0 0-1.879-5.985z"
+              fillRule="nonzero"
+            ></path>
+          </svg>
+          <div class="ml-4">
+            <h1 class="text-3xl font-semibold uppercase">Data Tool</h1>
+            <p>Generate JSON from any live DAZN homepage</p>
+          </div>
         </div>
-        <form action="#" id="form">
-          <h3>1. Choose Platform</h3>
-          <div class="pb-3 radio-group platform">
-            <fieldset>
-              <label
+        <form action="#" id="form" class="pt-8">
+          <!-- Structure -->
+          <div class="flex justify-between pb-2">
+            <h3>Data structure</h3>
+            <div class="has-tooltip relative">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-current text-asphalt mt-1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C9.76803 1.33325 11.4637 2.03563 12.714 3.28587C13.9642 4.53612 14.6666 6.23181 14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992ZM13.3333 7.99992C13.3333 5.0544 10.9454 2.66659 7.99992 2.66659C5.0544 2.66659 2.66659 5.0544 2.66659 7.99992C2.66659 10.9454 5.0544 13.3333 7.99992 13.3333C10.9454 13.3333 13.3333 10.9454 13.3333 7.99992ZM7.99992 10.6666C7.63173 10.6666 7.33325 10.9651 7.33325 11.3333C7.33325 11.7014 7.63173 11.9999 7.99992 11.9999C8.36811 11.9999 8.66659 11.7014 8.66659 11.3333C8.66659 10.9651 8.36811 10.6666 7.99992 10.6666ZM7.33325 9.99992H8.66658V9.24659C10.0086 8.90007 10.8614 7.58322 10.6287 6.21685C10.396 4.85049 9.15533 3.8902 7.77426 4.0075C6.39318 4.12479 5.33222 5.28054 5.33325 6.66659H6.66658C6.66658 5.93021 7.26354 5.33325 7.99992 5.33325C8.7363 5.33325 9.33325 5.93021 9.33325 6.66659C9.33325 7.40297 8.7363 7.99992 7.99992 7.99992H7.33325V9.99992Z"
+                />
+              </svg>
+              <div class="tooltip">
+                Select the platform you want to generate JSON data for
+              </div>
+            </div>
+          </div>
+          <div class="_platform pb-8">
+            <fieldset class="flex flex-row bg-tarmac p-1">
+              <label class="flex w-1/2"
                 ><input
                   type="radio"
                   name="platform"
                   value="figma"
                   checked="checked"
+                  class="hidden"
                 />
-                <div>
+                <div class="flex flex-grow p-2 items-center justify-center">
                   <img
-                    class="platform-img"
                     src="./assets/images/figma.png"
                     alt="figma"
+                    class="w-7 h-10 mr-3"
                   />
-                  Figma
+                  <div>
+                    <p class="leading-none font-semibold">Figma</p>
+                    <small>Content</small>
+                  </div>
                 </div>
               </label>
-              <label
-                ><input type="radio" name="platform" value="vscode" />
-                <div>
+              <label class="flex w-1/2"
+                ><input
+                  type="radio"
+                  name="platform"
+                  value="vscode"
+                  class="hidden"
+                />
+                <div class="flex flex-grow p-2 items-center justify-center">
                   <img
-                    class="platform-img"
                     src="./assets/images/vscode.png"
-                    alt="vs code"
+                    alt="figma"
+                    class="w-10 h-10 mr-3"
                   />
-                  VS Code
+                  <div>
+                    <p class="leading-none font-semibold">VS Code</p>
+                    <small>Content + meta</small>
+                  </div>
                 </div>
               </label>
             </fieldset>
           </div>
+          <!-- Market & Language -->
+          <div class="flex justify-between pb-2">
+            <h3>Market & language</h3>
+            <div class="has-tooltip relative">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-current text-asphalt mt-1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C9.76803 1.33325 11.4637 2.03563 12.714 3.28587C13.9642 4.53612 14.6666 6.23181 14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992ZM13.3333 7.99992C13.3333 5.0544 10.9454 2.66659 7.99992 2.66659C5.0544 2.66659 2.66659 5.0544 2.66659 7.99992C2.66659 10.9454 5.0544 13.3333 7.99992 13.3333C10.9454 13.3333 13.3333 10.9454 13.3333 7.99992ZM7.99992 10.6666C7.63173 10.6666 7.33325 10.9651 7.33325 11.3333C7.33325 11.7014 7.63173 11.9999 7.99992 11.9999C8.36811 11.9999 8.66659 11.7014 8.66659 11.3333C8.66659 10.9651 8.36811 10.6666 7.99992 10.6666ZM7.33325 9.99992H8.66658V9.24659C10.0086 8.90007 10.8614 7.58322 10.6287 6.21685C10.396 4.85049 9.15533 3.8902 7.77426 4.0075C6.39318 4.12479 5.33222 5.28054 5.33325 6.66659H6.66658C6.66658 5.93021 7.26354 5.33325 7.99992 5.33325C8.7363 5.33325 9.33325 5.93021 9.33325 6.66659C9.33325 7.40297 8.7363 7.99992 7.99992 7.99992H7.33325V9.99992Z"
+                />
+              </svg>
+              <div class="tooltip">
+                Select location of homepage and the language to request.
+              </div>
+            </div>
+          </div>
 
-          <h3>1. Market and Language</h3>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <select
+                name="country"
+                id="country"
+                class="bg-mako py-2 px-4 w-full"
+                required
+              >
+                <option value="">Market</option>
+                <option value="at">Austria</option>
+                <option value="de">German</option>
+                <option value="ch">Switzerland</option>
+                <option value="it">Italy</option>
+                <option value="es">Spain</option>
+                <option value="jp">Japan</option>
+                <option value="ca">Canada</option>
+                <option value="us">USA</option>
+                <option value="br">Brazil</option>
+                <option value="gb">UK</option>
+              </select>
+            </div>
+            <div>
+              <select
+                name="language"
+                id="language"
+                class="bg-mako py-2 px-4 w-full"
+                required
+              >
+                <option value="">Language</option>
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="it">Italian</option>
+                <option value="pt">Portuguese</option>
+                <option value="es">Spanish</option>
+                <option value="ja">Japanese</option>
+              </select>
+            </div>
+          </div>
+          <div class="pb-6">
+            <small class="text-asphalt"
+              >Defaults to english if requested language is unavailable</small
+            >
+          </div>
+          <!-- Product strings -->
+          <div class="flex justify-between pb-2">
+            <h3>Resource strings</h3>
+            <div class="has-tooltip relative">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 16 16"
+                xmlns="http://www.w3.org/2000/svg"
+                class="fill-current text-asphalt mt-1"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C9.76803 1.33325 11.4637 2.03563 12.714 3.28587C13.9642 4.53612 14.6666 6.23181 14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992ZM13.3333 7.99992C13.3333 5.0544 10.9454 2.66659 7.99992 2.66659C5.0544 2.66659 2.66659 5.0544 2.66659 7.99992C2.66659 10.9454 5.0544 13.3333 7.99992 13.3333C10.9454 13.3333 13.3333 10.9454 13.3333 7.99992ZM7.99992 10.6666C7.63173 10.6666 7.33325 10.9651 7.33325 11.3333C7.33325 11.7014 7.63173 11.9999 7.99992 11.9999C8.36811 11.9999 8.66659 11.7014 8.66659 11.3333C8.66659 10.9651 8.36811 10.6666 7.99992 10.6666ZM7.33325 9.99992H8.66658V9.24659C10.0086 8.90007 10.8614 7.58322 10.6287 6.21685C10.396 4.85049 9.15533 3.8902 7.77426 4.0075C6.39318 4.12479 5.33222 5.28054 5.33325 6.66659H6.66658C6.66658 5.93021 7.26354 5.33325 7.99992 5.33325C8.7363 5.33325 9.33325 5.93021 9.33325 6.66659C9.33325 7.40297 8.7363 7.99992 7.99992 7.99992H7.33325V9.99992Z"
+                />
+              </svg>
+              <div class="tooltip">Product strings</div>
+            </div>
+          </div>
+          <div class="bg-mako p-2 mb-6">stuff here</div>
 
-          <select name="country" id="country" required>
-            <option value="">Market</option>
-            <option value="at">Austria</option>
-            <option value="de">German</option>
-            <option value="ch">Switzerland</option>
-            <option value="it">Italy</option>
-            <option value="es">Spain</option>
-            <option value="jp">Japan</option>
-            <option value="ca">Canada</option>
-            <option value="us">USA</option>
-            <option value="br">Brazil</option>
-            <option value="gb">UK</option>
-          </select>
-
-          <strong>in</strong>
-
-          <select name="language" id="language" required>
-            <option value="">Language</option>
-            <option value="en">English</option>
-            <option value="fr">French</option>
-            <option value="de">German</option>
-            <option value="it">Italian</option>
-            <option value="pt">Portuguese</option>
-            <option value="es">Spanish</option>
-            <option value="ja">Japanese</option>
-          </select>
-
-          <br />
-          <br />
-          <h3>2. Resource Strings</h3>
-          <small>Product strings</small>
-
-          <br />
-          <br />
-          <h3 class="m-0">3. Rails</h3>
-          <small>Tile images and strings</small>
+          <!-- Rails -->
 
           <!-- height -->
-          <div class="grid-pair">
+          <div class="grid grid-flow-col gap-2">
             <div>
-              <label for="image_height"
-                >Height
-                <abbr
-                  title="Disproportionate sizing may result in black letterboxing strips appearing on the image"
-                  >&#x26A0;</abbr
-                ></label
+              <label for="image_height" class="block mb-2"
+                >Tile image height</label
               >
               <input
                 type="number"
+                class="bg-mako py-2 px-4 w-full"
                 value="374"
                 id="image_height"
                 name="image_height"
               />
             </div>
-            <strong class="grid-pair-text">x</strong>
+            <div class="text-center font-semibold self-end pb-2">x</div>
             <div>
               <!-- width -->
-              <label for="image_width"
-                >Width
-                <abbr
-                  title="Disproportionate sizing may result in black letterboxing strips appearing on the image"
-                  >&#x26A0;</abbr
-                ></label
+              <label for="image_width" class="block mb-2"
+                >Tile image width</label
               >
               <input
                 type="number"
+                class="bg-mako py-2 px-4 w-full"
                 value="668"
                 id="image_width"
                 name="image_width"
               />
             </div>
-            <strong class="grid-pair-text">px</strong>
+            <div class="text-center font-semibold self-end pb-2">px</div>
+          </div>
+          <div class="pb-2">
+            <small class="text-asphalt">
+              Disproportionate sizes may result in letterboxing or pillarboxing
+            </small>
           </div>
 
           <!-- large image  -->
-          <div class="pb-3">
+          <div class="flex mb-6">
+            <input
+              type="checkbox"
+              id="image_largest"
+              name="image_largest"
+              value="include"
+              class="_checkbox opacity-0 absolute h-4 w-4"
+            />
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="hidden w-3 h-3 pointer-events-none"
+                viewBox="0 0 17 12"
+              >
+                <defs />
+                <path
+                  fill="var(--colour-ebony)"
+                  fill-rule="nonzero"
+                  d="M17 0v2L7 12a1 1 0 01-2 0L0 7V5h2l4 4 9-9h2z"
+                />
+              </svg>
+            </div>
             <label for="image_largest">
-              <input
-                type="checkbox"
-                value="include"
-                id="image_largest"
-                name="image_largest"
-              />
-              Include largest versions
-              <abbr
-                title="An additional image will be added that is uncompressed with unrestricted dimensions"
-                >&#x26A0;</abbr
+              <span class="block">Add source images</span>
+              <small class="block text-asphalt"
+                >Image may result in large file size</small
               >
             </label>
           </div>
 
-          <!-- format -->
-          <div class="pb-3 radio-group">
-            <fieldset>
-              <label
-                ><input
-                  type="radio"
-                  name="image_format"
-                  value="jpg"
-                  checked="checked"
-                />
-                JPG
-              </label>
-              <label
-                ><input type="radio" name="image_format" value="png" />
-                PNG
-              </label>
-            </fieldset>
-          </div>
-
           <!-- Quality -->
-          <div class="pb-3 slider">
-            <label for="image_quality">Image Quality</label>
+
+          <label for="image_quality" class="block pb-1">Image Quality</label>
+          <div class="flex items-baseline pb-6">
             <input
+              class="rounded-lg appearance-none bg-mako h-3 w-full mr-2"
               type="range"
               value="80"
               min="1"
@@ -178,15 +261,14 @@
               id="image_quality"
               name="image_quality"
             />
-            <output>80</output>/100
+            <output class="w-7 text-right">80</output>/100
           </div>
 
-          <h3>3. Number of Tiles in Each Rail</h3>
-
           <!-- Tiles per rail -->
-          <div class="pb-3 slider slider--tiles">
-            <label for="tile_count">Tiles in rail</label>
+          <label for="tile_count">Tiles per rail</label>
+          <div class="flex items-baseline pb-10">
             <input
+              class="rounded-lg appearance-none bg-mako h-3 w-full mr-2"
               type="range"
               value="10"
               min="3"
@@ -195,17 +277,28 @@
               id="tile_count"
               name="tile_count"
             />
-            <output>10</output>/10
+            <output class="w-7 text-right">10</output>/10
           </div>
 
-          <h3>4. Generate and Download</h3>
-
-          <button type="submit">Generate</button>
-          <button type="download" disabled>Download</button>
+          <div class="flex gap-2 flex-grow">
+            <button
+              type="submit"
+              class="grow uppercase font-semibold bg-neon text-tarmac py-3"
+            >
+              Generate
+            </button>
+            <button
+              type="download"
+              class="grow uppercase font-semibold bg-neon text-tarmac py-3"
+              disabled
+            >
+              Download
+            </button>
+          </div>
         </form>
       </div>
-      <div class="results-wrap">
-        <pre id="json"></pre>
+      <div class="results-wrap p-4">
+        <pre id="json" class="text-14"></pre>
       </div>
     </div>
   </body>
