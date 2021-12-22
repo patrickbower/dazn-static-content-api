@@ -1,5 +1,6 @@
 import Api from "./api.js";
 import Extract from "./extract.js";
+import ResourceStrings from "./strings.js";
 
 /**
  * handleRequest - fetch api
@@ -199,3 +200,18 @@ form.addEventListener("submit", processRequest, false);
 // handle download
 const downLoadButton = document.querySelector("button[type=download]");
 downLoadButton.addEventListener("click", downloadJson, false);
+
+// test resource strings
+(async () => {
+  const prams = {
+    platform: "figma",
+    country: "ca",
+    language: "fr",
+    image_height: "374",
+    image_width: "668",
+    image_quality: "80",
+    tile_count: "10",
+  };
+  const answer = await ResourceStrings(prams);
+  console.log(answer);
+})();
