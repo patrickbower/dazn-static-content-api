@@ -8,7 +8,6 @@
   "homepage": "https://github.com/patrickbower/dazn-static-content-api#readme",
   "version": "1.0.0",
   "description": "Fetching live static rails content from the DAZN public API",
-  "main": "index.js",
   "keywords": [],
   "license": "ISC",
   "scripts": {
@@ -28,5 +27,9 @@
     "postcss": "^8.3.5",
     "postcss-import": "^14.0.2",
     "tailwindcss": "latest"
+  },
+  "dependencies": {
+    "@swc/helpers": "^0.3.2",
+    "regenerator-runtime": "^0.13.9"
   }
 }
