@@ -85,10 +85,14 @@ const addImages = (data, prams) => {
 const processRequest = async (event) => {
   event.preventDefault();
   const prams = handleForm(event.target);
+  // rails
   const rawData = await getData(prams);
   const basicData = Extract(rawData);
-  const data = addImages(basicData, prams);
-  output(data, prams);
+  const rails = addImages(basicData, prams);
+  // strings
+  const strings = await ResourceStrings(prams);
+  // output
+  output(rails, strings, prams);
   enableDownload();
 };
 
@@ -104,12 +108,12 @@ const handleForm = (form) => {
 };
 
 /**
- * filterData - max number of items per rail title (i.e. max 10 tiles per rail)
+ * filterRails - max number of items per rail title (i.e. max 10 tiles per rail)
  * @param {integer} limit
  * @param {array} data
  * @returns {array}
  */
-const filterData = (limit, data, platform) => {
+const filterRails = (limit, data, platform) => {
   // get unique rail titles from all data
   const railTitles = [...new Set(data.map((obj) => obj.rail_title))];
   // loop titles
@@ -155,9 +159,10 @@ const filterData = (limit, data, platform) => {
  * output - parse and pretty output to UI
  * @param {array} json
  */
-const output = (data, prams) => {
+const output = (rails, strings, prams) => {
   const tileCount = parseInt(prams.tile_count);
-  data = filterData(tileCount, data, prams.platform);
+  rails = filterRails(tileCount, rails, prams.platform);
+  const data = prams.platform === "figma" ? rails : { prams, strings, rails };
   const json = JSON.stringify(data, null, 2);
   document.querySelector("#json").innerHTML = json;
   window.localStorage.setItem("static-homepage-data", json);
@@ -200,18 +205,3 @@ form.addEventListener("submit", processRequest, false);
 // handle download
 const downLoadButton = document.querySelector("button[type=download]");
 downLoadButton.addEventListener("click", downloadJson, false);
-
-// test resource strings
-(async () => {
-  const prams = {
-    platform: "figma",
-    country: "ca",
-    language: "fr",
-    image_height: "374",
-    image_width: "668",
-    image_quality: "80",
-    tile_count: "10",
-  };
-  const answer = await ResourceStrings(prams);
-  console.log(answer);
-})();

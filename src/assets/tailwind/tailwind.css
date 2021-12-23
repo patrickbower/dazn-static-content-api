@@ -576,9 +576,8 @@ input[type="number"]::-webkit-outer-spin-button {
 .tooltip {
   visibility: hidden;
   position: absolute;
-  top: -2.5rem;
-  right: -1rem;
-  white-space: nowrap;
+  left: 1.5rem;
+  top: 0px;
   border-radius: 0.375rem;
   background-color: var(--colour-chalk);
   padding: 0.5rem;
@@ -652,6 +651,10 @@ button:disabled {
   margin-left: 1rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -660,8 +663,8 @@ button:disabled {
   margin-right: 0.75rem;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mb-1 {
@@ -670,10 +673,6 @@ button:disabled {
 
 .mr-2 {
   margin-right: 0.5rem;
-}
-
-.mt-3 {
-  margin-top: 0.75rem;
 }
 
 .block {
@@ -704,6 +703,14 @@ button:disabled {
   height: 1rem;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
 .w-14 {
   width: 3.5rem;
 }
@@ -730,6 +737,14 @@ button:disabled {
 
 .w-3 {
   width: 0.75rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .flex-grow {
@@ -785,8 +800,8 @@ button:disabled {
   border-radius: 0.5rem;
 }
 
-.border {
-  border-width: 1px;
+.border-b {
+  border-bottom-width: 1px;
 }
 
 .bg-ebony {
@@ -803,6 +818,14 @@ button:disabled {
 
 .bg-neon {
   background-color: var(--colour-neon);
+}
+
+.bg-field {
+  background-color: var(--colour-field);
+}
+
+.bg-chalk {
+  background-color: var(--colour-chalk);
 }
 
 .fill-current {
@@ -825,10 +848,6 @@ button:disabled {
   padding: 1rem;
 }
 
-.p-3 {
-  padding: 0.75rem;
-}
-
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -848,12 +867,12 @@ button:disabled {
   padding-top: 2rem;
 }
 
-.pb-2 {
-  padding-bottom: 0.5rem;
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
-.pb-8 {
-  padding-bottom: 2rem;
+.pb-2 {
+  padding-bottom: 0.5rem;
 }
 
 .pb-6 {
@@ -864,8 +883,8 @@ button:disabled {
   padding-bottom: 0.25rem;
 }
 
-.pb-10 {
-  padding-bottom: 2.5rem;
+.pb-12 {
+  padding-bottom: 3rem;
 }
 
 .text-center {
@@ -881,6 +900,16 @@ button:disabled {
   line-height: 2.25rem;
 }
 
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .text-14 {
   font-size: var(--font-size-14);
 }
@@ -891,10 +920,6 @@ button:disabled {
 
 .uppercase {
   text-transform: uppercase;
-}
-
-.leading-none {
-  line-height: 1;
 }
 
 .text-chalk {

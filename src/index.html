@@ -25,15 +25,15 @@
         </div>
         <form action="#" id="form" class="pt-8">
           <!-- Structure -->
-          <div class="flex justify-between pb-2">
-            <h3>Data Structure</h3>
+          <div class="flex justify-between border-b mb-6">
+            <h2 class="text-lg font-semibold">Data Structure</h2>
             <div class="has-tooltip relative">
               <svg
                 width="18"
                 height="18"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
-                class="fill-current text-asphalt mt-1"
+                class="fill-current mt-1"
               >
                 <path
                   fill-rule="evenodd"
@@ -41,12 +41,14 @@
                   d="M1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C9.76803 1.33325 11.4637 2.03563 12.714 3.28587C13.9642 4.53612 14.6666 6.23181 14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992ZM13.3333 7.99992C13.3333 5.0544 10.9454 2.66659 7.99992 2.66659C5.0544 2.66659 2.66659 5.0544 2.66659 7.99992C2.66659 10.9454 5.0544 13.3333 7.99992 13.3333C10.9454 13.3333 13.3333 10.9454 13.3333 7.99992ZM7.99992 10.6666C7.63173 10.6666 7.33325 10.9651 7.33325 11.3333C7.33325 11.7014 7.63173 11.9999 7.99992 11.9999C8.36811 11.9999 8.66659 11.7014 8.66659 11.3333C8.66659 10.9651 8.36811 10.6666 7.99992 10.6666ZM7.33325 9.99992H8.66658V9.24659C10.0086 8.90007 10.8614 7.58322 10.6287 6.21685C10.396 4.85049 9.15533 3.8902 7.77426 4.0075C6.39318 4.12479 5.33222 5.28054 5.33325 6.66659H6.66658C6.66658 5.93021 7.26354 5.33325 7.99992 5.33325C8.7363 5.33325 9.33325 5.93021 9.33325 6.66659C9.33325 7.40297 8.7363 7.99992 7.99992 7.99992H7.33325V9.99992Z"
                 />
               </svg>
-              <div class="tooltip">
-                Select the platform you want to generate JSON data for
+              <div class="tooltip" style="width: 330px">
+                These recommendations change the depth and quantity of data. If
+                more data is required for Figma, choose All Content and copy
+                paste the JSON you require.
               </div>
             </div>
           </div>
-          <div class="_platform pb-8">
+          <div class="_platform pb-4">
             <fieldset class="flex flex-row bg-tarmac p-1">
               <label class="flex w-1/2"
                 ><input
@@ -60,11 +62,11 @@
                   <img
                     src="./assets/images/figma.png"
                     alt="figma"
-                    class="w-7 h-10 mr-3"
+                    class="w-5 h-7 mr-3"
                   />
                   <div>
-                    <p class="leading-none font-semibold">Figma</p>
-                    <small>Content</small>
+                    <p class="font-semibold">Rails Content</p>
+                    <p class="text-xs">Rails data only (flat)</p>
                   </div>
                 </div>
               </label>
@@ -75,30 +77,37 @@
                   value="vscode"
                   class="hidden"
                 />
-                <div class="flex flex-grow p-2 items-center justify-center">
+                <div
+                  class="flex flex-grow py-2 px-4 items-center justify-center"
+                >
                   <img
                     src="./assets/images/vscode.png"
                     alt="figma"
-                    class="w-10 h-10 mr-3"
+                    class="w-8 h-8 mr-3"
                   />
                   <div>
-                    <p class="leading-none font-semibold">VS Code</p>
-                    <small>Content + Meta</small>
+                    <p class="font-semibold">All Content</p>
+                    <p class="text-xs">
+                      Rails, rails meta and strings data (deep)
+                    </p>
                   </div>
                 </div>
               </label>
             </fieldset>
+            <small class="text-asphalt">
+              *Figma can only import flat datasets
+            </small>
           </div>
           <!-- Market & Language -->
-          <div class="flex justify-between pb-2">
-            <h3>Market & Language</h3>
+          <div class="flex justify-between border-b mb-4">
+            <h2 class="text-lg font-semibold">Region</h2>
             <div class="has-tooltip relative">
               <svg
                 width="18"
                 height="18"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
-                class="fill-current text-asphalt mt-1"
+                class="fill-current mt-1"
               >
                 <path
                   fill-rule="evenodd"
@@ -106,12 +115,15 @@
                   d="M1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C9.76803 1.33325 11.4637 2.03563 12.714 3.28587C13.9642 4.53612 14.6666 6.23181 14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992ZM13.3333 7.99992C13.3333 5.0544 10.9454 2.66659 7.99992 2.66659C5.0544 2.66659 2.66659 5.0544 2.66659 7.99992C2.66659 10.9454 5.0544 13.3333 7.99992 13.3333C10.9454 13.3333 13.3333 10.9454 13.3333 7.99992ZM7.99992 10.6666C7.63173 10.6666 7.33325 10.9651 7.33325 11.3333C7.33325 11.7014 7.63173 11.9999 7.99992 11.9999C8.36811 11.9999 8.66659 11.7014 8.66659 11.3333C8.66659 10.9651 8.36811 10.6666 7.99992 10.6666ZM7.33325 9.99992H8.66658V9.24659C10.0086 8.90007 10.8614 7.58322 10.6287 6.21685C10.396 4.85049 9.15533 3.8902 7.77426 4.0075C6.39318 4.12479 5.33222 5.28054 5.33325 6.66659H6.66658C6.66658 5.93021 7.26354 5.33325 7.99992 5.33325C8.7363 5.33325 9.33325 5.93021 9.33325 6.66659C9.33325 7.40297 8.7363 7.99992 7.99992 7.99992H7.33325V9.99992Z"
                 />
               </svg>
-              <div class="tooltip">
-                Select location of homepage and the language to request.
+              <div class="tooltip" style="width: 330px">
+                Selected location of homepage and language will be added to the
+                file name on download.
               </div>
             </div>
           </div>
-
+          <div class="flex justify-between pb-2">
+            <!-- <h3>Market & Language</h3> -->
+          </div>
           <div class="grid grid-cols-2 gap-2">
             <div>
               <select
@@ -156,16 +168,17 @@
               >Defaults to english if requested language is unavailable</small
             >
           </div>
-          <!-- Product strings -->
-          <div class="flex justify-between pb-2">
-            <h3>Resource Strings</h3>
+
+          <!-- Rails -->
+          <div class="flex justify-between border-b mb-6">
+            <h2 class="text-lg font-semibold">Rails</h2>
             <div class="has-tooltip relative">
               <svg
                 width="18"
                 height="18"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
-                class="fill-current text-asphalt mt-1"
+                class="fill-current mt-1"
               >
                 <path
                   fill-rule="evenodd"
@@ -173,15 +186,14 @@
                   d="M1.33325 7.99992C1.33325 4.31802 4.31802 1.33325 7.99992 1.33325C9.76803 1.33325 11.4637 2.03563 12.714 3.28587C13.9642 4.53612 14.6666 6.23181 14.6666 7.99992C14.6666 11.6818 11.6818 14.6666 7.99992 14.6666C4.31802 14.6666 1.33325 11.6818 1.33325 7.99992ZM13.3333 7.99992C13.3333 5.0544 10.9454 2.66659 7.99992 2.66659C5.0544 2.66659 2.66659 5.0544 2.66659 7.99992C2.66659 10.9454 5.0544 13.3333 7.99992 13.3333C10.9454 13.3333 13.3333 10.9454 13.3333 7.99992ZM7.99992 10.6666C7.63173 10.6666 7.33325 10.9651 7.33325 11.3333C7.33325 11.7014 7.63173 11.9999 7.99992 11.9999C8.36811 11.9999 8.66659 11.7014 8.66659 11.3333C8.66659 10.9651 8.36811 10.6666 7.99992 10.6666ZM7.33325 9.99992H8.66658V9.24659C10.0086 8.90007 10.8614 7.58322 10.6287 6.21685C10.396 4.85049 9.15533 3.8902 7.77426 4.0075C6.39318 4.12479 5.33222 5.28054 5.33325 6.66659H6.66658C6.66658 5.93021 7.26354 5.33325 7.99992 5.33325C8.7363 5.33325 9.33325 5.93021 9.33325 6.66659C9.33325 7.40297 8.7363 7.99992 7.99992 7.99992H7.33325V9.99992Z"
                 />
               </svg>
-              <div class="tooltip">Product Strings</div>
+              <div class="tooltip" style="width: 330px">
+                Includes all available rails including rail title plus the tile
+                titles and tile meta.
+              </div>
             </div>
           </div>
-          <div class="bg-mako p-2 mb-6">stuff here</div>
-
-          <!-- Rails -->
-
-          <!-- height -->
           <div class="grid grid-flow-col gap-2">
+            <!-- height -->
             <div>
               <label for="image_height" class="block mb-1"
                 >Tile Image Height</label
@@ -195,8 +207,8 @@
               />
             </div>
             <div class="text-center font-semibold self-end pb-2">x</div>
+            <!-- width -->
             <div>
-              <!-- width -->
               <label for="image_width" class="block mb-1"
                 >Tile Image Width</label
               >
@@ -234,7 +246,7 @@
           </div>
 
           <!-- large image  -->
-          <div class="flex mb-6">
+          <div class="flex mb-4">
             <input
               type="checkbox"
               id="image_largest"
@@ -266,7 +278,7 @@
 
           <!-- Tiles per rail -->
           <label for="tile_count">Tiles Per Rail</label>
-          <div class="flex items-baseline pb-10">
+          <div class="flex items-baseline pb-12">
             <input
               class="rounded-lg appearance-none bg-mako h-3 w-full mr-2"
               type="range"
@@ -289,7 +301,7 @@
             </button>
             <button
               type="download"
-              class="grow uppercase font-semibold bg-neon text-tarmac py-3"
+              class="grow uppercase font-semibold bg-chalk text-tarmac py-3"
               disabled
             >
               Download

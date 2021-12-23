@@ -133,10 +133,9 @@ input[type="number"]::-webkit-outer-spin-button {
     p-2
     bg-chalk
     text-tarmac
-    -top-10
-    -right-4
-    text-14
-    whitespace-nowrap;
+    left-6
+    top-0
+    text-14;
 }
 
 .has-tooltip:hover .tooltip {
