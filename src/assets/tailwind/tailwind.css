@@ -639,12 +639,20 @@ button:disabled {
   pointer-events: none;
 }
 
+.static {
+  position: static;
+}
+
 .absolute {
   position: absolute;
 }
 
 .relative {
   position: relative;
+}
+
+.m-0 {
+  margin: 0px;
 }
 
 .ml-4 {
@@ -673,6 +681,10 @@ button:disabled {
 
 .mr-2 {
   margin-right: 0.5rem;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .block {
@@ -747,6 +759,10 @@ button:disabled {
   width: 2rem;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
 .flex-grow {
   flex-grow: 1;
 }
@@ -796,12 +812,24 @@ button:disabled {
   align-self: flex-end;
 }
 
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
 
 .border-b {
   border-bottom-width: 1px;
+}
+
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
+.border-concrete {
+  border-color: var(--colour-concrete);
 }
 
 .bg-ebony {
@@ -826,6 +854,10 @@ button:disabled {
 
 .bg-chalk {
   background-color: var(--colour-chalk);
+}
+
+.bg-transparent {
+  background-color: transparent;
 }
 
 .fill-current {
@@ -914,6 +946,10 @@ button:disabled {
   font-size: var(--font-size-14);
 }
 
+.text-16 {
+  font-size: var(--font-size-16);
+}
+
 .font-semibold {
   font-weight: 600;
 }
@@ -936,4 +972,13 @@ button:disabled {
 
 .opacity-0 {
   opacity: 0;
+}
+
+.focus-within\:border-chalk:focus-within {
+  border-color: var(--colour-chalk);
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
